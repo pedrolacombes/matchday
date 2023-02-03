@@ -15,7 +15,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib as mat
 import streamlit as st
-import requests
+import cv2
 
 # Puxando o arquivo com a base de passes
 
@@ -633,8 +633,7 @@ with tab4:
   # puxando videos selecionados e fazendo upload online
   for video in lista_id_videos_selecionados:
     url = 'https://github.com/pedrolacombes/matchday/tree/videos/{video}.mp4?raw=true'
-    response = requests.get(url)
-    video_file = open(response.content)
+    video_file = cv2.VideoCapture(url)
     video_bytes = video_file.read()
     st.video(video_bytes)
 
