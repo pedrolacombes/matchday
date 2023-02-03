@@ -15,6 +15,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib as mat
 import streamlit as st
+import requests
 
 # Puxando o arquivo com a base de passes
 
