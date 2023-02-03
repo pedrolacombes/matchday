@@ -631,7 +631,7 @@ with tab4:
 
   # puxando videos selecionados e fazendo upload online
   for video in lista_id_videos_selecionados:
-    video_file = open(f'C:\\Users\\pedro\\anaconda3\\Lib\\my_python_files\\Videos\\{video}.mp4', 'rb')
+    video_file = open(https://github.com/pedrolacombes/matchday/tree/videos/{video}.mp4?raw=true', 'rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
