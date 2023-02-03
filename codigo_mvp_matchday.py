@@ -569,7 +569,7 @@ with tab2:
 with tab4:
   # Puxando o arquivo com a base de videos
 
-  data_videos = pd.read_csv('C:\\Users\\pedro\\anaconda3\\Lib\\my_python_files\\base_teste_matchday_videos.csv')
+  data_videos = pd.read_csv('https://github.com/pedrolacombes/matchday/blob/main/base_teste_matchday_videos.csv?raw=true')
 
   # Convertendo base de videos para dataframe
 
