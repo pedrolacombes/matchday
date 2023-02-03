@@ -18,7 +18,7 @@ import streamlit as st
 
 # Puxando o arquivo com a base de passes
 
-data = pd.read_csv(base_teste_matchday.csv)
+data = pd.read_csv('https://github.com/pedrolacombes/matchday/blob/main/base_teste_matchday.csv')
 
 # transformando a tabela em dataframe
 
