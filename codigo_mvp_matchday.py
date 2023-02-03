@@ -15,7 +15,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib as mat
 import streamlit as st
-from opencv-python import cv2
+from opencv import cv2
 
 # Puxando o arquivo com a base de passes
 
