@@ -631,8 +631,8 @@ with tab4:
 
   # puxando videos selecionados e fazendo upload online
   for video in lista_id_videos_selecionados:
-    url = 'https://github.com/pedrolacombes/matchday/tree/videos/{video}.mp4?raw=true'
-    video_file = cv2.VideoCapture(url)
+    url = 'https://github.com/pedrolacombes/matchday/blob/main/1.mp4?raw=true'
+    video_file = open(url, 'rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
