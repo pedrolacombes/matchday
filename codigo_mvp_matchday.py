@@ -19,7 +19,7 @@ import streamlit as st
 # Puxando o arquivo com a base de passes
 
 url = 'https://github.com/pedrolacombes/matchday/blob/main/base_teste_matchday.csv'
-data = pd.read_csv(url,index_col=0)
+data = pd.read_csv(url)
 
 # transformando a tabela em dataframe
 
