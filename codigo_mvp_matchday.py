@@ -632,7 +632,7 @@ with tab4:
   # puxando videos selecionados e fazendo upload online
   for video in lista_id_videos_selecionados:
     url = 'https://github.com/pedrolacombes/matchday/blob/main/1.mp4'
-    video_file = open(url, 'rb')
+    video_file = open(url)
     video_bytes = video_file.read()
     st.video(video_bytes)
 
