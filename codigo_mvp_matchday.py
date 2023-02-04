@@ -684,7 +684,7 @@ with tab4:
     st.write(fps2)
     st.write(total2)
     
-    video_file = open('outpy.avi')
+    video_file = open('outpy.avi','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
