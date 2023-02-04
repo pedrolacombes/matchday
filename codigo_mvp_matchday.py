@@ -647,7 +647,7 @@ with tab4:
     fps = int(cap.get(5))
 
     # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-    out = cv2.VideoWriter('outpy.mp4',cv2.VideoWriter_fourcc(*'XVID'), fps, (frame_width,frame_height))
+    out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), fps, (frame_width,frame_height))
  
     while(True):
         ret, frame = cap.read()
@@ -668,7 +668,7 @@ with tab4:
     
     
     # chamando no streamlit
-    video_file = open('outpy.mp4','rb')
+    video_file = open('outpy.avi','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
