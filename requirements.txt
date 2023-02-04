@@ -5,3 +5,4 @@ numpy
 seaborn
 opencv-python-headless
 ffmpeg
+MoviePy
