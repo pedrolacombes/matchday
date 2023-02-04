@@ -671,6 +671,18 @@ with tab4:
     # When everything done, release the video capture and video write objects
     cap.release()
     out.release()
+    
+    
+    # caracteristicas do arquivo output
+    cap2 = cv2.VideoCapture(f'https://github.com/pedrolacombes/matchday/blob/main/{video}.mp4?raw=true')
+    frame_width2 = int(cap2.get(3))
+    frame_height2 = int(cap2.get(4))
+    fps2 = cap2.get(cv2.CAP_PROP_FPS)
+    total2 = int(cap2.get(cv2.CAP_PROP_FRAME_COUNT))
+    st.write(frame_width2)
+    st.write(frame_height2)
+    st.write(fps2)
+    st.write(total2)
 
     st.video('outpy.avi')
 
