@@ -644,15 +644,10 @@ with tab4:
     # We convert the resolutions from float to integer.
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
-    fps = cap.get(cv2.CAP_PROP_FPS)
-    total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    st.write(frame_width)
-    st.write(frame_height)
-    st.write(fps)
-    st.write(total)
+    fps = int(cap.get(5))
 
     # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-    out = cv2.VideoWriter('outpy.mp4',cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_height,frame_width))
+    out = cv2.VideoWriter('outpy.mp4',cv2.VideoWriter_fourcc(*'XVID'), fps, (frame_width,frame_height))
  
     while(True):
         ret, frame = cap.read()
@@ -660,31 +655,19 @@ with tab4:
         if ret == True: 
      
     # Write the frame into the file 'output.avi'
-            cv2.imshow('frame', frame)
+        
             out.write(frame)
  
     # Break the loop
         else:
             break
-    
-    st.write(out)
  
     # When everything done, release the video capture and video write objects
     cap.release()
     out.release()
     
     
-    # caracteristicas do arquivo output
-    cap2 = cv2.VideoCapture(f'https://github.com/pedrolacombes/matchday/blob/main/{video}.mp4?raw=true')
-    frame_width2 = int(cap2.get(3))
-    frame_height2 = int(cap2.get(4))
-    fps2 = cap2.get(cv2.CAP_PROP_FPS)
-    total2 = int(cap2.get(cv2.CAP_PROP_FRAME_COUNT))
-    st.write(frame_width2)
-    st.write(frame_height2)
-    st.write(fps2)
-    st.write(total2)
-    
+    # chamando no streamlit
     video_file = open('outpy.mp4','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
