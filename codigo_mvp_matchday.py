@@ -665,5 +665,5 @@ with tab4:
     cap.release()
     out.release()
 
-    st.video(outpy.mp4)
+    st.video('outpy.mp4')
 
