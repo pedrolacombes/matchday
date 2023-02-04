@@ -656,9 +656,6 @@ with tab4:
      
     # Write the frame into the file 'output.avi'
             out.write(frame)
-        
-    # Display the resulting frame    
-            cv2.imshow('frame',frame)
  
     # Break the loop
         else:
