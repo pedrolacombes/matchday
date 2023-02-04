@@ -660,6 +660,7 @@ with tab4:
         if ret == True: 
      
     # Write the frame into the file 'output.avi'
+            cv2.imshow('frame', frame)
             out.write(frame)
  
     # Break the loop
