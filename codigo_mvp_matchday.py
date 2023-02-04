@@ -664,6 +664,8 @@ with tab4:
     # When everything done, release the video capture and video write objects
     cap.release()
     out.release()
+    
+    st.write(frame)
 
     st.video('outpy.mp4')
 
