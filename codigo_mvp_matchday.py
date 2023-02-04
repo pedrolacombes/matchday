@@ -635,7 +635,7 @@ with tab4:
   for video in lista_id_videos_selecionados:
 
     # Create a VideoCapture object
-    cap = cv2.VideoCapture(f'https://github.com/pedrolacombes/matchday/blob/main/{video}.mp4?raw=true')
+    cap = cv2.VideoCapture(f'https://github.com/pedrolacombes/matchday/blob/videos/{video}.mp4?raw=true')
  
     # Check if camera opened successfully
     if (cap.isOpened() == False): 
