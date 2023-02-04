@@ -668,6 +668,7 @@ with tab4:
     
     
     # chamando no streamlit
+    output
     video_file = open('outpy.avi','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
