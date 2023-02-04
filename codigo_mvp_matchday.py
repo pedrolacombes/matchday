@@ -664,9 +664,6 @@ with tab4:
     # When everything done, release the video capture and video write objects
     cap.release()
     out.release()
- 
-    # Closes all the frames
-    cv2.destroyAllWindows()
 
     st.video('outpy.mp4')
 
