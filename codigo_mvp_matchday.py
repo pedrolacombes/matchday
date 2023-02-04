@@ -652,7 +652,7 @@ with tab4:
     st.write(total)
 
     # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-    out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('X','V','I','D'), fps, (frame_height,frame_width))
+    out = cv2.VideoWriter('outpy.mp4',cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_height,frame_width))
  
     while(True):
         ret, frame = cap.read()
@@ -684,7 +684,7 @@ with tab4:
     st.write(fps2)
     st.write(total2)
     
-    video_file = open('outpy.avi','rb')
+    video_file = open('outpy.mp4','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
