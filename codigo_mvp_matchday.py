@@ -650,7 +650,7 @@ with tab4:
     st.write(fps)
 
     # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-    out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('X','V','I','D'), fps, (frame_height,frame_width))
+    out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('X','V','I','D'), fps, (frame_width,frame_height))
  
     while(True):
         ret, frame = cap.read()
