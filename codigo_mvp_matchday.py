@@ -662,7 +662,9 @@ with tab4:
  
     # Break the loop
         else:
-            break 
+            break
+    
+    st.write(out)
  
     # When everything done, release the video capture and video write objects
     cap.release()
