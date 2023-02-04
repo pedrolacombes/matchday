@@ -647,7 +647,7 @@ with tab4:
     fps = cap.get(cv2.CAP_PROP_FPS)
 
     # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-    out = cv2.VideoWriter('outpy.mp4',cv2.VideoWriter_fourcc(*'X264'), fps, (frame_width,frame_height))
+    out = cv2.VideoWriter('outpy.mp4',cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_width,frame_height))
  
     while(True):
         ret, frame = cap.read()
