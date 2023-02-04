@@ -16,6 +16,7 @@ import seaborn as sns
 import matplotlib as mat
 import streamlit as st
 import cv2
+import moviepy.editor as moviepy
 
 # Puxando o arquivo com a base de passes
 
@@ -668,8 +669,9 @@ with tab4:
     
     
     # chamando no streamlit
-    output
-    video_file = open('outpy.avi','rb')
+    clip = moviepy.VideoFileClip ('outpy.avi')
+    clip.write_videofile('outpy.mp4')
+    video_file = open('outpy.mp4','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
