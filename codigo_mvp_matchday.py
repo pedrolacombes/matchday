@@ -656,10 +656,6 @@ with tab4:
      
     # Write the frame into the file 'output.avi'
             out.write(frame)
-    
-    # Press Q on keyboard to stop recording
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
  
     # Break the loop
         else:
