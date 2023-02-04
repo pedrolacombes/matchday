@@ -645,9 +645,11 @@ with tab4:
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
     fps = cap.get(cv2.CAP_PROP_FPS)
+    total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     st.write(frame_width)
     st.write(frame_height)
     st.write(fps)
+    st.write(total)
 
     # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
     out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('X','V','I','D'), fps, (frame_width,frame_height))
