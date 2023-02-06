@@ -20,7 +20,9 @@ import moviepy.editor as moviepy
 
 # Puxando o arquivo com a base de passes
 
-url = 'https://github.com/pedrolacombes/matchday/blob/main/base_teste_matchday.csv?raw=true'
+sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
+sheet_name = 'Geral'
+url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
 data = pd.read_csv(url)
 
 # transformando a tabela em dataframe
@@ -570,9 +572,11 @@ with tab2:
 
 with tab4:
   # Puxando o arquivo com a base de videos
-
-  data_videos = pd.read_csv('https://github.com/pedrolacombes/matchday/blob/main/base_teste_matchday_videos.csv?raw=true')
-
+  sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
+  sheet_name = 'Videos'
+  url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+  data_videos = pd.read_csv(url)
+    
   # Convertendo base de videos para dataframe
 
   my_df_video = pd.DataFrame(data_videos)
@@ -635,7 +639,7 @@ with tab4:
   for video in lista_id_videos_selecionados:
 
     # Create a VideoCapture object
-    cap = cv2.VideoCapture(f'https://github.com/pedrolacombes/matchday/blob/videos/{video}.mp4?raw=true')
+    cap = cv2.VideoCapture(f'https://drive.google.com/drive/folders/1MaEUfr5k68OP6AsrqCW7aLMLcyX3URWZ/{video}.mp4?raw=true')
  
     # Check if camera opened successfully
     if (cap.isOpened() == False): 
