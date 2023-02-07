@@ -641,5 +641,5 @@ with tab4:
   for video in lista_id_videos_selecionados:
     url = data_videos.loc[video-1,'Link_youtube']
     # Create a VideoCapture object
-    st.video('https://www.youtube.com/watch?v=O2kSJ-oC7tA')
+    st.video(url)
 
