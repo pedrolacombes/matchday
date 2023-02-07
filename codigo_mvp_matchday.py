@@ -639,8 +639,7 @@ with tab4:
   for video in lista_id_videos_selecionados:
 
     # Create a VideoCapture object
-    cap = cv2.VideoCapture(f'https://drive.google.com/drive/folders/1MaEUfr5k68OP6AsrqCW7aLMLcyX3URWZ/{video}.mp4?raw=true')
-    video_file = open(f'https://drive.google.com/drive/folders/1MaEUfr5k68OP6AsrqCW7aLMLcyX3URWZ/{video}.mp4?raw=true','rb')
+    video_file = open(f'https://drive.google.com/drive/folders/1MaEUfr5k68OP6AsrqCW7aLMLcyX3URWZ/{video}.mp4','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
