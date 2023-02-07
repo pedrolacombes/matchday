@@ -277,11 +277,11 @@ with tab3:
         if option_stat_mapa == 'Passes':
             if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo':
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],
-                  [int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="blue")
+                        [int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="blue")
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="blue")
             if my_df['Nome_Pass_Outcome'][i] == 'Passe Errado':
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],
-                  [int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="red")
+                        [int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="red")
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="red")
 
         if option_stat_mapa == 'Finalizacoes':
