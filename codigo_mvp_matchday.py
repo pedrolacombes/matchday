@@ -640,42 +640,7 @@ with tab4:
 
     # Create a VideoCapture object
     cap = cv2.VideoCapture(f'https://drive.google.com/drive/folders/1MaEUfr5k68OP6AsrqCW7aLMLcyX3URWZ/{video}.mp4?raw=true')
- 
-    # Check if camera opened successfully
-    if (cap.isOpened() == False): 
-        print("Unable to read camera feed")
- 
-    # Default resolutions of the frame are obtained.The default resolutions are system dependent.
-    # We convert the resolutions from float to integer.
-    frame_width = int(cap.get(3))
-    frame_height = int(cap.get(4))
-    fps = int(cap.get(5))
-
-    # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-    out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), fps, (frame_width,frame_height))
- 
-    while(True):
-        ret, frame = cap.read()
- 
-        if ret == True: 
-     
-    # Write the frame into the file 'output.avi'
-        
-            out.write(frame)
- 
-    # Break the loop
-        else:
-            break
- 
-    # When everything done, release the video capture and video write objects
-    cap.release()
-    out.release()
-    
-    
-    # chamando no streamlit
-    clip = moviepy.VideoFileClip ('outpy.avi')
-    clip.write_videofile('outpy.mp4')
-    video_file = open('outpy.mp4','rb')
+    video_file = open(f'https://drive.google.com/drive/folders/1MaEUfr5k68OP6AsrqCW7aLMLcyX3URWZ/{video}.mp4?raw=true','rb')
     video_bytes = video_file.read()
     st.video(video_bytes)
 
