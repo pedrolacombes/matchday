@@ -639,7 +639,5 @@ with tab4:
   for video in lista_id_videos_selecionados:
 
     # Create a VideoCapture object
-    video_file = open('https://www.youtube.com/watch?v=O2kSJ-oC7tA','rb')
-    video_bytes = video_file.read()
-    st.video(video_bytes)
+    st.video('https://www.youtube.com/watch?v=O2kSJ-oC7tA')
 
