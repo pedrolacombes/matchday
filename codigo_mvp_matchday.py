@@ -318,7 +318,7 @@ with tab3:
             if my_df['Nome_Duelo_Outcome'][i] == 'Duelo aéreo perdido':
                 plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
                 
-        st.pyplot(fig)
+    st.pyplot(fig)
     
     # aba de heatmap
     
