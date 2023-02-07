@@ -640,6 +640,9 @@ with tab4:
   # puxando videos selecionados e fazendo upload online
   for video in lista_id_videos_selecionados:
     url = data_videos.loc[video-1,'Link_youtube']
+    estatistica = data_videos.loc[video-1,'Nome_Stat_Video']
+    legenda = estatistica+':'
     # Create a VideoCapture object
+    st.write(legenda)
     st.video(url)
 
