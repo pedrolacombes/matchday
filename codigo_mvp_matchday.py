@@ -609,40 +609,48 @@ with tab4:
   option_stat_video = st.multiselect('Selecione as estatísticas', filtros_stats_videos)
   option_partidas_videos = st.multiselect('Selecione as partidas', filtros_partidas_videos)
 
+  # Condicional para ver se filtros foram selecionados
+  if option_partidas_videos == [] or option_stat_video ==[]:
+    st.write('Para visualizar os videos é necessário selecionar pelo menos uma estatística E uma partida')
+  else:
+  
+    
+    
+    
   # Puxando o id_partida das partidas selecionadas
-  partidas_selecionadas_videos = pd.DataFrame()
+    partidas_selecionadas_videos = pd.DataFrame()
 
-  for partida_selecionada in option_partidas_videos:
-    partida_selecionada_videos_i = pd.DataFrame(
-      df_visitantes.loc[df_visitantes['nome_visitante'] == partida_selecionada])
-    partidas_selecionadas_videos = partidas_selecionadas_videos.append(partida_selecionada_videos_i, ignore_index=True)
+    for partida_selecionada in option_partidas_videos:
+        partida_selecionada_videos_i = pd.DataFrame(
+            df_visitantes.loc[df_visitantes['nome_visitante'] == partida_selecionada])
+        partidas_selecionadas_videos = partidas_selecionadas_videos.append(partida_selecionada_videos_i, ignore_index=True)
 
   # criando lista única de ids de partidas selecionadas
-  lista_id_partidas_selecionadas = partidas_selecionadas_videos.id_partida.unique()
-  lista_id_partidas_selecionadas = lista_id_partidas_selecionadas.tolist()
+    lista_id_partidas_selecionadas = partidas_selecionadas_videos.id_partida.unique()
+    lista_id_partidas_selecionadas = lista_id_partidas_selecionadas.tolist()
 
   # puxando o id dos videos de partidas e estatisticas selecionadas
 
-  df_videos_selecionados = pd.DataFrame()
+    df_videos_selecionados = pd.DataFrame()
 
-  for partida_selecionada in lista_id_partidas_selecionadas:
-    for stat_selecionada in option_stat_video:
-      df_videos_selecionados_i = pd.DataFrame(my_df_video.loc[(my_df_video['Index_Partida'] == partida_selecionada) & (
+    for partida_selecionada in lista_id_partidas_selecionadas:
+        for stat_selecionada in option_stat_video:
+            df_videos_selecionados_i = pd.DataFrame(my_df_video.loc[(my_df_video['Index_Partida'] == partida_selecionada) & (
                 my_df_video['Nome_Stat_Video'] == stat_selecionada)])
-      df_videos_selecionados = df_videos_selecionados.append(df_videos_selecionados_i)
+        df_videos_selecionados = df_videos_selecionados.append(df_videos_selecionados_i)
 
   # puxando lista com index dos videos selecionados
-  lista_id_videos_selecionados = df_videos_selecionados.Index_Video.unique()
-  lista_id_videos_selecionados = lista_id_videos_selecionados.tolist()
+    lista_id_videos_selecionados = df_videos_selecionados.Index_Video.unique()
+    lista_id_videos_selecionados = lista_id_videos_selecionados.tolist()
 
   
 
   # puxando videos selecionados e fazendo upload online
-  for video in lista_id_videos_selecionados:
-    url = data_videos.loc[video-1,'Link_youtube']
-    estatistica = data_videos.loc[video-1,'Nome_Stat_Video']
-    legenda = estatistica+':'
+    for video in lista_id_videos_selecionados:
+        url = data_videos.loc[video-1,'Link_youtube']
+        estatistica = data_videos.loc[video-1,'Nome_Stat_Video']
+        legenda = estatistica+':'
     # Create a VideoCapture object
-    st.write(legenda)
-    st.video(url)
+        st.write(legenda)
+        st.video(url)
 
