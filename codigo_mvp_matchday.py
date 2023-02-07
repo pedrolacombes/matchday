@@ -232,28 +232,28 @@ with tab3:
   ax = fig.add_subplot(1, 1, 1)
 
   # Pitch Outline & Centre Line
-  ax.plot([0, 0], [0, 90], color="black")
-  ax.plot([0, 130], [90, 90], color="black")
-  ax.plot([130, 130], [90, 0], color="black")
-  ax.plot([130, 0], [0, 0], color="black")
-  ax.plot([65, 65], [0, 90], color="black")
+  ax.plot([0, 0], [0, 25], color="black")
+  ax.plot([0, 45], [25, 25], color="black")
+  ax.plot([45, 45], [25, 0], color="black")
+  ax.plot([45, 0], [0, 0], color="black")
+  ax.plot([22.5, 22.5], [0, 25], color="black")
 
   # Pitch shoot-out lines
-  ax.plot([45, 45], [60, 30], color="black")
-  ax.plot([85, 85], [60, 30], color="black")
+  ax.plot([17.5, 17.5], [17.5, 12.5], color="black")
+  ax.plot([27.5, 27.5], [17.5, 12.5], color="black")
 
   # Left Penalty Area
-  ax.plot([16.5, 16.5], [65, 25], color="black")
-  ax.plot([0, 16.5], [65, 65], color="black")
-  ax.plot([16.5, 0], [25, 25], color="black")
+  ax.plot([8, 8], [20, 5], color="black")
+  ax.plot([0, 8], [20, 20], color="black")
+  ax.plot([8, 0], [5, 5], color="black")
 
   # Right Penalty Area
-  ax.plot([130, 113.5], [65, 65], color="black")
-  ax.plot([113.5, 113.5], [65, 25], color="black")
-  ax.plot([113.5, 130], [25, 25], color="black")
+  ax.plot([45, 37], [20, 20], color="black")
+  ax.plot([37, 37], [20, 5], color="black")
+  ax.plot([37, 45], [5, 5], color="black")
 
   # Prepare Circles
-  centreSpot = plt.Circle((65, 45), 0.8, color="black")
+  centreSpot = plt.Circle((22.5,12.5), 0.8, color="black")
 
   # Draw Circles
   ax.add_patch(centreSpot)
