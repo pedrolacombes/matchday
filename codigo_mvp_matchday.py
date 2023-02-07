@@ -328,50 +328,50 @@ with tab3:
     if option_stat_mapa == 'Passes':
       passes_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Passe", 'x_start'])
       passes_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Passe", 'y_start'])
-      sns.kdeplot(x=passes_xstart, y=passes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,
+      sns.kdeplot(x=passes_xstart, y=passes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=100,
                   cmap=customcmap)
 
     if option_stat_mapa == 'Finalizacoes':
       finalizacoes_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Finalização", 'x_start'])
       finalizacoes_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Finalização", 'y_start'])
-      sns.kdeplot(x=finalizacoes_xstart, y=finalizacoes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,
+      sns.kdeplot(x=finalizacoes_xstart, y=finalizacoes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=100,
                   cmap=customcmap)
 
     if option_stat_mapa == 'Faltas Cometidas':
       falta_cometida_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Falta cometida", 'x_start'])
       falta_cometida_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Falta cometida", 'y_start'])
       sns.kdeplot(x=falta_cometida_xstart, y=falta_cometida_ystart, shade=True, shade_lowest=False, alpha=1,
-                  n_levels=30,
+                  n_levels=100,
                   cmap=customcmap)
 
     if option_stat_mapa == 'Faltas Sofridas':
       falta_sofrida_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Falta sofrida", 'x_start'])
       falta_sofrida_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Falta sofrida", 'y_start'])
-      sns.kdeplot(x=falta_sofrida_xstart, y=falta_sofrida_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,
+      sns.kdeplot(x=falta_sofrida_xstart, y=falta_sofrida_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=100,
                   cmap=customcmap)
 
     if option_stat_mapa == 'Perdas de Posse':
       perda_posse_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Perda de posse", 'x_start'])
       perda_posse_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Perda de posse", 'y_start'])
-      sns.kdeplot(x=perda_posse_xstart, y=perda_posse_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,
+      sns.kdeplot(x=perda_posse_xstart, y=perda_posse_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=100,
                   cmap=customcmap)
 
     if option_stat_mapa == 'Desarmes':
       desarmes_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Desarme", 'x_start'])
       desarmes_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Desarme", 'y_start'])
-      sns.kdeplot(x=desarmes_xstart, y=desarmes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,
+      sns.kdeplot(x=desarmes_xstart, y=desarmes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=100,
                   cmap=customcmap)
 
     if option_stat_mapa == 'Duelos':
       duelos_xstart = list(my_df.loc[my_df['Nome_Duelo_Outcome'] != "Null", 'x_start'])
       duelos_ystart = list(my_df.loc[my_df['Nome_Duelo_Outcome'] != "Null", 'y_start'])
-      sns.kdeplot(x=duelos_xstart, y=duelos_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,
+      sns.kdeplot(x=duelos_xstart, y=duelos_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=100,
                   cmap=customcmap)
 
     if option_stat_mapa == 'Toques':
       toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
       toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
-      sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,
+      sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=100,
                   cmap=customcmap)
 
     plt.ylim(0, 25)
