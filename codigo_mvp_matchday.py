@@ -225,159 +225,151 @@ with tab1:
   st.dataframe(df_data)
 
 with tab3:
+  
+  tab5, tab6 = st.tabs(['Heat Map','Event Map'])
+  
   # Desenhando o mapa de passes
-
+  with tab 6:
+    
   # Create figure
-  fig = plt.figure()
-  ax = fig.add_subplot(1, 1, 1)
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
 
   # Pitch Outline & Centre Line
-  ax.plot([0, 0], [0, 25], color="black")
-  ax.plot([0, 45], [25, 25], color="black")
-  ax.plot([45, 45], [25, 0], color="black")
-  ax.plot([45, 0], [0, 0], color="black")
-  ax.plot([22.5, 22.5], [0, 25], color="black")
+    ax.plot([0, 0], [0, 25], color="black")
+    ax.plot([0, 45], [25, 25], color="black")
+    ax.plot([45, 45], [25, 0], color="black")
+    ax.plot([45, 0], [0, 0], color="black")
+    ax.plot([22.5, 22.5], [0, 25], color="black")
 
   # Pitch shoot-out lines
-  ax.plot([17.5, 17.5], [15, 10], color="black")
-  ax.plot([27.5, 27.5], [15, 10], color="black")
+    ax.plot([17.5, 17.5], [15, 10], color="black")
+    ax.plot([27.5, 27.5], [15, 10], color="black")
 
   # Left Penalty Area
-  ax.plot([8, 8], [20, 5], color="black")
-  ax.plot([0, 8], [20, 20], color="black")
-  ax.plot([8, 0], [5, 5], color="black")
+    ax.plot([8, 8], [20, 5], color="black")
+    ax.plot([0, 8], [20, 20], color="black")
+    ax.plot([8, 0], [5, 5], color="black")
 
   # Right Penalty Area
-  ax.plot([45, 37], [20, 20], color="black")
-  ax.plot([37, 37], [20, 5], color="black")
-  ax.plot([37, 45], [5, 5], color="black")
+    ax.plot([45, 37], [20, 20], color="black")
+    ax.plot([37, 37], [20, 5], color="black")
+    ax.plot([37, 45], [5, 5], color="black")
 
   # Prepare Circles
-  centreSpot = plt.Circle((22.5,12.5), 0.1, color="black")
+    centreSpot = plt.Circle((22.5,12.5), 0.1, color="black")
 
   # Draw Circles
-  ax.add_patch(centreSpot)
+    ax.add_patch(centreSpot)
 
   # Tidy Axes
-  ax.axis('off')
+    ax.axis('off')
 
   # Criando caixa com estatísticas que podem ser selecionadas para os mapas
-  lista_mapas = ['Heat Map', 'Event Map']
-  option_mapa = st.selectbox('Selecione um tipo de mapa', lista_mapas)
-
-  if option_mapa == 'Event Map':
     lista_stats_mapa = ['Passes', 'Finalizacoes', 'Duelos', 'Desarmes', 'Perdas de Posse', 'Faltas Sofridas',
                         'Faltas Cometidas']
-  if option_mapa == 'Heat Map':
-    lista_stats_mapa = ['Passes', 'Finalizacoes', 'Duelos', 'Desarmes', 'Perdas de Posse', 'Toques']
-  option_stat_mapa = st.selectbox('Selecione uma estatística', lista_stats_mapa)
+    option_stat_mapa = st.selectbox('Selecione uma estatística', lista_stats_mapa)
 
   # Desenhando eventos de opção selecionada
 
-  if option_mapa == 'Event Map':
     for i in range(len(my_df)):
 
-      if option_stat_mapa == 'Passes':
-        if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo':
-          ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],
+        if option_stat_mapa == 'Passes':
+            if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo':
+                ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],
                   [int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="blue")
-          ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="blue")
-        if my_df['Nome_Pass_Outcome'][i] == 'Passe Errado':
-          ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],
+                ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="blue")
+            if my_df['Nome_Pass_Outcome'][i] == 'Passe Errado':
+                ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],
                   [int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="red")
-          ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="red")
+                ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="red")
 
-      if option_stat_mapa == 'Finalizacoes':
-        if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização bloqueada':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="orange")
-        if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização no gol':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="blue")
-        if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização para fora':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="red")
+        if option_stat_mapa == 'Finalizacoes':
+            if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização bloqueada':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="orange")
+            if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização no gol':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="blue")
+            if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização para fora':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="red")
 
-      if option_stat_mapa == 'Faltas Cometidas':
-        if my_df['Nome_Ato'][i] == 'Falta cometida':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
+        if option_stat_mapa == 'Faltas Cometidas':
+            if my_df['Nome_Ato'][i] == 'Falta cometida':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
 
-      if option_stat_mapa == 'Faltas Sofridas':
-        if my_df['Nome_Ato'][i] == 'Falta sofrida':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
+        if option_stat_mapa == 'Faltas Sofridas':
+            if my_df['Nome_Ato'][i] == 'Falta sofrida':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
 
-      if option_stat_mapa == 'Perdas de Posse':
-        if my_df['Nome_Ato'][i] == 'Perda de posse':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
+        if option_stat_mapa == 'Perdas de Posse':
+            if my_df['Nome_Ato'][i] == 'Perda de posse':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
 
-      if option_stat_mapa == 'Desarmes':
-        if my_df['Nome_Ato'][i] == 'Desarme':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
+        if option_stat_mapa == 'Desarmes':
+            if my_df['Nome_Ato'][i] == 'Desarme':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
 
-      if option_stat_mapa == 'Duelos':
-        if my_df['Nome_Duelo_Outcome'][i] == 'Duelo no Chão Ganho':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="blue")
-        if my_df['Nome_Duelo_Outcome'][i] == 'Duelo no chão perdido':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="red")
-        if my_df['Nome_Duelo_Outcome'][i] == 'Duelo Aéreo Ganho':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
-        if my_df['Nome_Duelo_Outcome'][i] == 'Duelo aéreo perdido':
-          plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
+        if option_stat_mapa == 'Duelos':
+            if my_df['Nome_Duelo_Outcome'][i] == 'Duelo no Chão Ganho':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="blue")
+            if my_df['Nome_Duelo_Outcome'][i] == 'Duelo no chão perdido':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="red")
+            if my_df['Nome_Duelo_Outcome'][i] == 'Duelo Aéreo Ganho':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
+            if my_df['Nome_Duelo_Outcome'][i] == 'Duelo aéreo perdido':
+                plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
+                
+        st.pyplot(fig)
+    
+    # aba de heatmap
+    
+    with tab 5:
+        
+        # Create figure
+        fig = plt.figure()
+        ax = fig.add_subplot(1, 1, 1)
 
-  if option_mapa == 'Heat Map':
+  # Pitch Outline & Centre Line
+        ax.plot([0, 0], [0, 25], color="black")
+        ax.plot([0, 45], [25, 25], color="black")
+        ax.plot([45, 45], [25, 0], color="black")
+        ax.plot([45, 0], [0, 0], color="black")
+        ax.plot([22.5, 22.5], [0, 25], color="black")
 
-    customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['white', 'green'])
+  # Pitch shoot-out lines
+        ax.plot([17.5, 17.5], [15, 10], color="black")
+        ax.plot([27.5, 27.5], [15, 10], color="black")
 
-    if option_stat_mapa == 'Passes':
-      passes_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Passe", 'x_start'])
-      passes_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Passe", 'y_start'])
-      sns.kdeplot(x=passes_xstart, y=passes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
+  # Left Penalty Area
+        ax.plot([8, 8], [20, 5], color="black")
+        ax.plot([0, 8], [20, 20], color="black")
+        ax.plot([8, 0], [5, 5], color="black")
+
+  # Right Penalty Area
+        ax.plot([45, 37], [20, 20], color="black")
+        ax.plot([37, 37], [20, 5], color="black")
+        ax.plot([37, 45], [5, 5], color="black")
+
+  # Prepare Circles
+        centreSpot = plt.Circle((22.5,12.5), 0.1, color="black")
+
+  # Draw Circles
+        ax.add_patch(centreSpot)
+
+  # Tidy Axes
+        ax.axis('off')
+  
+   # mapa de calor de toques
+        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['white', 'green'])
+
+        toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
+        toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
+        sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
                   cmap=customcmap)
 
-    if option_stat_mapa == 'Finalizacoes':
-      finalizacoes_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Finalização", 'x_start'])
-      finalizacoes_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Finalização", 'y_start'])
-      sns.kdeplot(x=finalizacoes_xstart, y=finalizacoes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
-                  cmap=customcmap)
+        plt.ylim(0, 25)
+        plt.xlim(0, 45)
 
-    if option_stat_mapa == 'Faltas Cometidas':
-      falta_cometida_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Falta cometida", 'x_start'])
-      falta_cometida_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Falta cometida", 'y_start'])
-      sns.kdeplot(x=falta_cometida_xstart, y=falta_cometida_ystart, shade=True, shade_lowest=False, alpha=1,
-                  n_levels=200,
-                  cmap=customcmap)
-
-    if option_stat_mapa == 'Faltas Sofridas':
-      falta_sofrida_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Falta sofrida", 'x_start'])
-      falta_sofrida_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Falta sofrida", 'y_start'])
-      sns.kdeplot(x=falta_sofrida_xstart, y=falta_sofrida_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
-                  cmap=customcmap)
-
-    if option_stat_mapa == 'Perdas de Posse':
-      perda_posse_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Perda de posse", 'x_start'])
-      perda_posse_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Perda de posse", 'y_start'])
-      sns.kdeplot(x=perda_posse_xstart, y=perda_posse_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
-                  cmap=customcmap)
-
-    if option_stat_mapa == 'Desarmes':
-      desarmes_xstart = list(my_df.loc[my_df['Nome_Ato'] == "Desarme", 'x_start'])
-      desarmes_ystart = list(my_df.loc[my_df['Nome_Ato'] == "Desarme", 'y_start'])
-      sns.kdeplot(x=desarmes_xstart, y=desarmes_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
-                  cmap=customcmap)
-
-    if option_stat_mapa == 'Duelos':
-      duelos_xstart = list(my_df.loc[my_df['Nome_Duelo_Outcome'] != "Null", 'x_start'])
-      duelos_ystart = list(my_df.loc[my_df['Nome_Duelo_Outcome'] != "Null", 'y_start'])
-      sns.kdeplot(x=duelos_xstart, y=duelos_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
-                  cmap=customcmap)
-
-    if option_stat_mapa == 'Toques':
-      toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
-      toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
-      sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
-                  cmap=customcmap)
-
-    plt.ylim(0, 25)
-    plt.xlim(0, 45)
-
-  st.pyplot(fig)
+        st.pyplot(fig)
 
 with tab2:
   # Criar lista com lista única das partidas
