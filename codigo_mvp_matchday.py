@@ -239,8 +239,8 @@ with tab3:
   ax.plot([22.5, 22.5], [0, 25], color="black")
 
   # Pitch shoot-out lines
-  ax.plot([17.5, 17.5], [17.5, 12.5], color="black")
-  ax.plot([27.5, 27.5], [17.5, 12.5], color="black")
+  ax.plot([17.5, 17.5], [15, 10], color="black")
+  ax.plot([27.5, 27.5], [15, 10], color="black")
 
   # Left Penalty Area
   ax.plot([8, 8], [20, 5], color="black")
@@ -253,7 +253,7 @@ with tab3:
   ax.plot([37, 45], [5, 5], color="black")
 
   # Prepare Circles
-  centreSpot = plt.Circle((22.5,12.5), 0.8, color="black")
+  centreSpot = plt.Circle((22.5,12.5), 0.1, color="black")
 
   # Draw Circles
   ax.add_patch(centreSpot)
