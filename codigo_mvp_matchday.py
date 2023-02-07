@@ -635,9 +635,11 @@ with tab4:
   lista_id_videos_selecionados = df_videos_selecionados.Index_Video.unique()
   lista_id_videos_selecionados = lista_id_videos_selecionados.tolist()
 
+  
+
   # puxando videos selecionados e fazendo upload online
   for video in lista_id_videos_selecionados:
-
+    url = data_videos.loc[video-1,'Link_youtube']
     # Create a VideoCapture object
     st.video('https://www.youtube.com/watch?v=O2kSJ-oC7tA')
 
