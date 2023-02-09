@@ -29,7 +29,7 @@ data = pd.read_csv(url)
 # transformando a tabela em dataframe
 
 my_df = pd.DataFrame(data)
-my_df = my_df[my_df['Index_Partida'] > 0]
+my_df = my_df[my_df['Index_Partida'] == 1]
 
 # declarando as 3 colunas do aplicativo
 
