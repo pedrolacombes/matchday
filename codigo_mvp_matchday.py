@@ -29,7 +29,7 @@ data = pd.read_csv(url)
 # transformando a tabela em dataframe
 
 my_df = pd.DataFrame(data)
-my_df = my_df[my_df['Index_Evento'] != 'Sem Valor']
+my_df = my_df[my_df['Index_Evento'] != 'Sem valor']
 
 # declarando as 3 colunas do aplicativo
 
