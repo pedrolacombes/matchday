@@ -25,9 +25,11 @@ sheet_name = 'Geral'
 url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
 data = pd.read_csv(url)
 
+
 # transformando a tabela em dataframe
 
 my_df = pd.DataFrame(data)
+my_df = my_df[my_df['Index_Partida'] !='']
 
 # declarando as 3 colunas do aplicativo
 
