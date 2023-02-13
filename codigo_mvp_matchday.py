@@ -380,6 +380,9 @@ with tab3:
 
   # Draw Circles
         ax.add_patch(centreSpot)
+    
+  # Draw sentido do campo
+        ax.plt.arrow([18, 26], [26.6,26.5], color="black")
 
   # Tidy Axes
         ax.axis('off')
