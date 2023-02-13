@@ -303,6 +303,12 @@ with tab3:
                 plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="blue")
             if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização para fora':
                 plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "o", color="red")
+            ax.plot(0,26,'o',color='orange')
+            ax.plot(0,27,'o',color='blue')
+            ax.plot(0,28,'o',color='red')
+            ax.text(1,25.75,'Finalização bloqueada',fontsize=6)
+            ax.text(1,26.75,'Finalização no gol', fontsize=6)
+            ax.text(1,27.75,'Finalização para fora', fontsize=6)
 
         if option_stat_mapa == 'Faltas Cometidas':
             if my_df['Nome_Ato'][i] == 'Falta cometida':
@@ -329,6 +335,14 @@ with tab3:
                 plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="blue")
             if my_df['Nome_Duelo_Outcome'][i] == 'Duelo aéreo perdido':
                 plt.plot(int(my_df["x_start"][i]), int(my_df["y_start"][i]), "x", color="red")
+            ax.plot(0,26,'o',color='blue')
+            ax.plot(0,27,'o',color='red')
+            ax.plot(0,28,'x',color='blue')
+            ax.plot(0,28,'x',color='red')
+            ax.text(1,25.75,'Duelo no chão ganho',fontsize=6)
+            ax.text(1,26.75,'Duelo no chão perdido', fontsize=6)
+            ax.text(1,27.75,'Duelo aéreo ganho', fontsize=6)
+            ax.text(1,28.75,'Duelo aéreo perdido', fontsize=6)
                 
     st.pyplot(fig)
     
