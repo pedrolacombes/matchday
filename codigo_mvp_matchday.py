@@ -382,7 +382,8 @@ with tab3:
         ax.add_patch(centreSpot)
     
   # Draw sentido do campo
-        ax.plt.arrow([18, 26], [26.6,26.5], color="black")
+        sentido = plt.arrow([18, 26], [26.6,26.5], color="black")
+        ax.add_patch(sentido)
 
   # Tidy Axes
         ax.axis('off')
