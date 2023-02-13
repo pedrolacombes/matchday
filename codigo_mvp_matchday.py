@@ -690,7 +690,7 @@ with tab4:
         legenda = estatistica+':'
     # Create a VideoCapture object
         if url == 'Null':
-            st.write(f'Não há vídeos de {estatistica} para a partida vs. {visitante_data})
+            st.write(f'Não há vídeos de {estatistica} para a partida vs. {visitante_data}')
         st.write(legenda)
         st.video(url)
 
