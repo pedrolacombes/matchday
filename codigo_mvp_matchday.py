@@ -229,9 +229,7 @@ with tab1:
   sorting = {'estatística': ['Gol', 'Assistência', 'Toque', 'Passe', '% Passes certos', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Perda de posse', 'Duelo no Chão', '% Duelos no chão vencidos', 'Duelo Aéreo', '% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta cometida', 'Falta sofrida', 'Cartão Amarelo', 'Cartão Vermelho']}
   df_mapping = pd.DataFrame(sorting)
   sort_mapping  = df_mapping.reset_index().set_index('estatística')
-  st.dataframe(sort_mapping)
   df_data['ordem'] = df_data.index.map(sort_mapping['index'])
-  st.dataframe(df_data)
   df_data = df_data.sort_values('ordem')
   df_data = df_data.drop(columns = ['ordem'])
   st.dataframe(df_data)
