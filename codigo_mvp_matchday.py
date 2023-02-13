@@ -569,7 +569,8 @@ with tab2:
   chart_data = pd.DataFrame(Scouts, Partidas)
 
   st.bar_chart(chart_data)
-    
+  
+  st.dataframe(chart_data)
   fig = plt.figure()
   ax = fig.add_axes([0,0,1,1])
   ax = chart_data.plot.bar(x='Partidas', y='Scouts', rot=0)
