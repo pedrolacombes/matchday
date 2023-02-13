@@ -687,10 +687,11 @@ with tab4:
         url = data_videos.loc[video-1,'Link_youtube']
         estatistica = data_videos.loc[video-1,'Nome_Stat_Video']
         visitante_data = data_videos.loc[video-1,'Visitante_Data']
-        legenda = estatistica+':'
     # Create a VideoCapture object
         if url == 'Null':
             st.write(f'Não há vídeos de {estatistica} para a partida vs. {visitante_data}')
-        st.write(legenda)
-        st.video(url)
+        else:
+            legenda = estatistica+visitante_data+':'
+            st.write(legenda)
+            st.video(url)
 
