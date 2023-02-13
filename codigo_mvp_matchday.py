@@ -226,7 +226,6 @@ with tab1:
     dicionario_partidas_visitantes.values())  ## quando coloco essa variavel dentro do dataframe ele passa a nao entender os valores porque acho que estao em dicionarios diferentes
   df_data = pd.DataFrame(Scouts, columns=Partidas, index=lista_estatisticas)
   st.dataframe(df_data)
-  st.write(dic_stat['Passe'])
 
 with tab3:
   
