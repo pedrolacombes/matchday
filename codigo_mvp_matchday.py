@@ -204,7 +204,7 @@ with tab1:
 
   # modificando o dicionario para nome de adversario
 
-  stats = list(dic_stat.keys())
+  stats = list(Dicionario_evolucao.keys())
   #stats = ['Gol', 'Assistência', 'Toque', 'Passe Certo','% Passes certos', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Perdas de posse', 'Duelo no Chão', '% Duelos no chão vencidos', 'Duelo Aéreo', '% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta cometida', 'Falta sofrida', 'Cartão Amarelo', 'Cartão Vermelho']
 
   dic_partida_j = {}
