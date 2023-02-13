@@ -291,7 +291,7 @@ with tab3:
             if my_df['Nome_Pass_Outcome'][i] == 'Passe Errado':
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],[int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="red")
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="red")
-            ax.plot(0,26,'passe errado',color='blue')
+            ax.plot(0,26,'o',color='blue')
 
         if option_stat_mapa == 'Finalizacoes':
             if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização bloqueada':
