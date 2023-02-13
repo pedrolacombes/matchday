@@ -227,7 +227,7 @@ with tab1:
   df_data = pd.DataFrame(Scouts, columns=Partidas, index=lista_estatisticas)
   df_data = df_data.loc[(df_data.index != 'Duelo no Chão Ganho') & (df_data.index != 'Duelo Aéreo Ganho') & (df_data.index != 'Duelo no chão perdido') & (df_data.index != 'Duelo aéreo perdido') & (df_data.index != 'Passe Longo') & (df_data.index != 'Drible') & (df_data.index != 'Passe Certo') & (df_data.index != 'Passe Errado')]
   sorting = {'estatística': ['Gol', 'Assistência', 'Toque', 'Passe', '% Passes certos', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Perda de posse', 'Duelo no Chão', '% Duelos no chão vencidos', 'Duelo Aéreo', '% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta cometida', 'Falta sofrida', 'Cartão Amarelo', 'Cartão Vermelho']}
-  df_mapping = pd.Dataframe(sorting)
+  df_mapping = pd.DataFrame(sorting)
   sort_mapping  = df_mapping.reset_index().set_index('estatística')
   df_data['ordem'] = df.index.map(sort_mapping['estatística'])
   df_data.sort_values('ordem')
