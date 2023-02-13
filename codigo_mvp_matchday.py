@@ -571,10 +571,8 @@ with tab2:
   st.bar_chart(chart_data)
   
   st.dataframe(chart_data)
-  valores = chart_data[0]
-  labels = chart_data.index  
   fig, ax = plt.subplots()
-  ax = chart_data.plot.bar(rot=0)
+  ax = chart_data.plot.bar()
   st.pyplot(fig)
     
 with tab4:
