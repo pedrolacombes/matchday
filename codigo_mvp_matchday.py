@@ -567,7 +567,7 @@ with tab2:
   Scouts = list(dic_stat[Stat].values())
   Partidas = list(dic_stat[Stat].keys())
   chart_data = pd.DataFrame(Scouts, Partidas)
-  chart_data.rename(columns = {0:stat}, inplace = True)
+  chart_data.rename(columns = {0:Stat}, inplace = True)
   st.bar_chart(chart_data)
     
 with tab4:
