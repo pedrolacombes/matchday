@@ -569,6 +569,7 @@ with tab2:
   chart_data = pd.DataFrame(Scouts, Partidas)
   chart_data.rename(columns = {0:Stat}, inplace = True)
   st.bar_chart(chart_data)
+  st.dataframe(chart_data)
     
 with tab4:
   # Puxando o arquivo com a base de videos
