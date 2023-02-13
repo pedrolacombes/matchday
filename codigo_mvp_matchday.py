@@ -569,7 +569,12 @@ with tab2:
   chart_data = pd.DataFrame(Scouts, Partidas)
 
   st.bar_chart(chart_data)
-
+    
+  fig = plt.figure()
+  ax = fig.add_axes([0,0,1,1])
+  ax.bar(chart_data)
+  st.pyplot(fig)
+    
 with tab4:
   # Puxando o arquivo com a base de videos
   sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
