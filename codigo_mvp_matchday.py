@@ -401,7 +401,7 @@ with tab3:
         sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
                   cmap=customcmap)
 
-        plt.ylim(0, 5)
+        plt.ylim(0, 25)
         plt.xlim(0, 45)
 
         st.pyplot(fig)
