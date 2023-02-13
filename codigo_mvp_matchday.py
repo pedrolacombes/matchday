@@ -287,7 +287,7 @@ with tab3:
   # Desenhando eventos de opção selecionada
 
     if option_stat_mapa == 'Passes':
-            distancia = st.slider('Passes que ganharam pelo menos x metros de campo (selecionar '-45' irá mostrar todos os passes)', -45, 45, 1)
+            distancia = st.slider('Passes que ganharam pelo menos x metros de campo (selecionar -45 irá mostrar todos os passes)', -45, 45, 1)
 
     for i in range(len(my_df)):
         
