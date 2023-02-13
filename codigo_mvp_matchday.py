@@ -289,15 +289,20 @@ with tab3:
     if option_stat_mapa == 'Passes':
             distancia = st.slider('Passes que ganharam pelo menos x metros de campo (selecionar -45 irá mostrar todos os passes)', -45, 45, 1)
 
+    contagem_passe_certo = 0
+    contagem_passe_errado = 0
+    
     for i in range(len(my_df)):
         
         if option_stat_mapa == 'Passes':
             if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo' and ((my_df['x_end'][i]-my_df['x_start'][i])>distancia):
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],[int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="blue", linewidth =0.6)
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="blue", markersize=2)
+                contagem_passe_certo += 1
             if my_df['Nome_Pass_Outcome'][i] == 'Passe Errado' and ((my_df['x_end'][i]-my_df['x_start'][i])>distancia):
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],[int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="red", linewidth =0.6)
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="red", markersize=2)
+                contagem_passe_errado += 1
             ax.plot(0,26,'o',color='blue')
             ax.plot(0,27,'o',color='red')
             ax.text(1,25.75,'Passes certos',fontsize=6)
@@ -352,6 +357,10 @@ with tab3:
             ax.text(1,28.75,'Duelo aéreo perdido', fontsize=6)
                 
     st.pyplot(fig)
+    
+    if option_stat_mapa == 'Passes':
+        st.write(f"Ao todo foram {contagem_passe_certo + contagem_passe_errado} passes com ganho de mais de {distancia} metros de campo")
+        st.write(f"Desse total, {contagem_passe_certo / (contagem_passe_certo + contagem_passe_errado)} foram passes certos")
     
     # aba de heatmap
     
