@@ -218,8 +218,8 @@ with tab1:
 
   # Criando tabela geral
 
-  lista_estatisticas = list(dic_stat.keys())
-  Scouts = list(dic_stat.values())
+  lista_estatisticas = list('Gol', 'Assistência', 'Toque', 'Passe Certo','% Passes certos', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Perdas de posse', 'Duelo no Chão', '% Duelos no chão vencidos', 'Duelo Aéreo', '% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta cometida', 'Falta sofrida', 'Cartão Amarelo', 'Cartão Vermelho')  
+  Scouts = list(dic_stat['Gol'].values(), dic_stat['Assistência'].values(), dic_stat['Toque'].values(), dic_stat['Passe Certo'].values(),dic_stat['% Passes certos'].values(), dic_stat['Finalização'].values(), dic_stat['Finalização no gol'].values(), dic_stat['Finalização para fora'].values(), dic_stat['Finalização bloqueada'].values(), dic_stat['Perdas de posse'].values(), dic_stat['Duelo no Chão'].values(), dic_stat['% Duelos no chão vencidos'].values(), dic_stat['Duelo Aéreo'].values(), dic_stat['% Duelos aéreos vencidos'].values(), dic_stat['Desarme'].values(), dic_stat['Corte'].values(), dic_stat['Bloqueio de chute'].values(), dic_stat['Falta cometida'].values(), dic_stat['Falta sofrida'].values(), dic_stat['Cartão Amarelo'].values(), dic_stat['Cartão Vermelho'].values())
   Partidas = list(dic_stat['Passe'].keys())
   adversario = list(
     dicionario_partidas_visitantes.values())  ## quando coloco essa variavel dentro do dataframe ele passa a nao entender os valores porque acho que estao em dicionarios diferentes
