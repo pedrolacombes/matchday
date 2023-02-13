@@ -239,7 +239,7 @@ with tab3:
   tab5, tab6 = st.tabs(['Heat Map','Event Map'])
   
   # Desenhando o mapa de passes
-  with tab6:
+  with tab5:
     
   # Create figure
     fig = plt.figure()
@@ -352,7 +352,7 @@ with tab3:
     
     # aba de heatmap
     
-    with tab5:
+    with tab6:
         
         # Create figure
         fig = plt.figure()
