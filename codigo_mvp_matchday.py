@@ -225,6 +225,7 @@ with tab1:
   adversario = list(
     dicionario_partidas_visitantes.values())  ## quando coloco essa variavel dentro do dataframe ele passa a nao entender os valores porque acho que estao em dicionarios diferentes
   df_data = pd.DataFrame(Scouts, columns=Partidas, index=lista_estatisticas)
+  df_data = df_data.loc[(df_data.index != 'Duelo no Chão Ganho') & (df_data.index != 'Duelo Aéreo Ganho') & (df_data.index != 'Duelo no chão perdido') & (df_data.index != 'Duelo aéreo perdido') & (df_data.index != 'Passe Longo') & (df_data.index != 'Drible') & (df_data.index != 'Passe Certo') & (df_data.index != 'Passe Errado')]
   st.dataframe(df_data)
 
 with tab3:
