@@ -572,7 +572,7 @@ with tab2:
     
   fig = plt.figure()
   ax = fig.add_axes([0,0,1,1])
-  ax.bar(chart_data)
+  ax = chart_data.plot.bar(x='Partidas', y='Scouts', rot=0)
   st.pyplot(fig)
     
 with tab4:
