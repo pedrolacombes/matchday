@@ -572,7 +572,7 @@ with tab2:
   
   st.dataframe(chart_data)
   st.write(chart_data['0']
-  st.write(chart_data.index)  
+  st.write(chart_data['index'])  
   fig = plt.figure()
   ax = fig.add_axes([0,0,1,1])
   ax = chart_data.plot.bar(x=chart_data.index, y='0', rot=0)
