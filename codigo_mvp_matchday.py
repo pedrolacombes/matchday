@@ -573,8 +573,8 @@ with tab2:
   st.dataframe(chart_data)
   fig = plt.figure()
   ax = fig.add_axes([0,0,1,1])
-  ax = chart_data.plot.bar(x='Partidas', y='Scouts', rot=0)
-  st.pyplot(fig)
+  ax = chart_data.plot.bar(x=chat_data.index, y='0', rot=0)
+  st.pyplot(fig)/
     
 with tab4:
   # Puxando o arquivo com a base de videos
