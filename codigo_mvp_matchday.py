@@ -289,10 +289,10 @@ with tab3:
     for i in range(len(my_df)):
 
         if option_stat_mapa == 'Passes':
-            if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo' and ((my_df['x_end']-my_df['x_start'])>10):
+            if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo' & ((my_df['x_end'][i]-my_df['x_start'][i])>10):
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],[int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="blue", linewidth =0.6)
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="blue", markersize=2)
-            if my_df['Nome_Pass_Outcome'][i] == 'Passe Errado' and ((my_df['x_end']-my_df['x_start'])>10):
+            if my_df['Nome_Pass_Outcome'][i] == 'Passe Errado' & ((my_df['x_end'][i]-my_df['x_start'][i])>10):
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],[int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="red", linewidth =0.6)
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="red", markersize=2)
             ax.plot(0,26,'o',color='blue')
