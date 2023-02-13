@@ -285,6 +285,8 @@ with tab3:
     for i in range(len(my_df)):
 
         if option_stat_mapa == 'Passes':
+            st.write('setas vermelhas = passes errados')
+            st.write('setas azuis = passes certos')
             if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo':
                 ax.plot([int(my_df["x_start"][i]), int(my_df["x_end"][i])],[int(my_df["y_start"][i]), int(my_df["y_end"][i])], color="blue")
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="blue")
