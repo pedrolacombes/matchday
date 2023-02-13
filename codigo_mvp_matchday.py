@@ -233,6 +233,7 @@ with tab1:
   df_data['ordem'] = df_data.index.map(sort_mapping['index'])
   st.dataframe(df_data)
   df_data = df_data.sort_values('ordem')
+  df_data = df_data.drop(columns = ['ordem'])
   st.dataframe(df_data)
 
 with tab3:
