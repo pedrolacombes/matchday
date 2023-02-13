@@ -386,8 +386,9 @@ with tab3:
         ax.add_patch(centreSpot)
     
   # Draw sentido do campo
-        sentido = plt.arrow(18, 26, 26, 26, color="black")
+        sentido = plt.arrow(18, 26, 8, 0, color="black", head_width = 0.4)
         ax.add_patch(sentido)
+
 
   # Tidy Axes
         ax.axis('off')
@@ -400,7 +401,7 @@ with tab3:
         sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
                   cmap=customcmap)
 
-        plt.ylim(0, 25)
+        plt.ylim(0, 26.5)
         plt.xlim(0, 45)
 
         st.pyplot(fig)
