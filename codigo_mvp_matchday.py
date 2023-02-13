@@ -270,8 +270,8 @@ with tab3:
     centreSpot = plt.Circle((22.5,12.5), 0.1, color="black")
     
   # Draw sentido do campo
-     sentido = plt.arrow(18, 26, 26, 26, color="black")
-     ax.add_patch(sentido)
+    sentido = plt.arrow(18, 26, 26, 26, color="black")
+    ax.add_patch(sentido)
 
   # Draw Circles
     ax.add_patch(centreSpot)
