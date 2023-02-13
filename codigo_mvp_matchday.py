@@ -338,7 +338,7 @@ with tab3:
             ax.plot(0,26,'o',color='blue')
             ax.plot(0,27,'o',color='red')
             ax.plot(0,28,'x',color='blue')
-            ax.plot(0,28,'x',color='red')
+            ax.plot(0,29,'x',color='red')
             ax.text(1,25.75,'Duelo no chão ganho',fontsize=6)
             ax.text(1,26.75,'Duelo no chão perdido', fontsize=6)
             ax.text(1,27.75,'Duelo aéreo ganho', fontsize=6)
