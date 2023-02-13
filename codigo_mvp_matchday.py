@@ -360,7 +360,7 @@ with tab3:
     
     if option_stat_mapa == 'Passes':
         st.write(f"Ao todo foram {contagem_passe_certo + contagem_passe_errado} passes com ganho de mais de {distancia} metros de campo")
-        st.write(f"Desse total, {contagem_passe_certo / (contagem_passe_certo + contagem_passe_errado)} foram passes certos")
+        st.write(f"Desse total, {contagem_passe_certo / (contagem_passe_certo + contagem_passe_errado):.0%} foram passes certos")
     
     # aba de heatmap
     
