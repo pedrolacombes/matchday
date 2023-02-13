@@ -571,7 +571,7 @@ with tab2:
   st.bar_chart(chart_data)
   
   st.dataframe(chart_data)
-  st.write(chart_data['0'])
+  st.write(chart_data[0])
   st.write(chart_data.index)  
   fig = plt.figure()
   ax = fig.add_axes([0,0,1,1])
