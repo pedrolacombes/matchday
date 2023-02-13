@@ -575,7 +575,7 @@ with tab2:
   st.write(chart_data.index)  
   fig = plt.figure()
   ax = fig.add_axes([0,0,1,1])
-  ax = chart_data.plot.bar(x=chart_data.index, y='0', rot=0)
+  ax = chart_data.plot.bar(x=chart_data.index, y=0, rot=0)
   st.pyplot(fig)
     
 with tab4:
