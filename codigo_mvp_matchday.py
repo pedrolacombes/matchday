@@ -573,8 +573,7 @@ with tab2:
   st.dataframe(chart_data)
   valores = chart_data[0]
   labels = chart_data.index  
-  fig = plt.figure()
-  ax = fig.add_axes([0,0,1,1])
+  fig, ax = plt.subplots()
   ax = chart_data.plot.bar(rot=0)
   st.pyplot(fig)
     
