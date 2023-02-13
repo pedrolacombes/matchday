@@ -568,10 +568,6 @@ with tab2:
   Partidas = list(dic_stat[Stat].keys())
   chart_data = pd.DataFrame(Scouts, Partidas)
   st.bar_chart(chart_data)
-  
-  st.dataframe(chart_data)
-  ax = chart_data.plot.bar()
-  st.pyplot(ax)
     
 with tab4:
   # Puxando o arquivo com a base de videos
