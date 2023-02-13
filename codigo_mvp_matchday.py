@@ -654,9 +654,6 @@ with tab4:
     st.write('Para visualizar os videos é necessário selecionar pelo menos uma estatística E uma partida')
   else:
   
-    
-    
-    
   # Puxando o id_partida das partidas selecionadas
     partidas_selecionadas_videos = pd.DataFrame()
 
@@ -689,8 +686,11 @@ with tab4:
     for video in lista_id_videos_selecionados:
         url = data_videos.loc[video-1,'Link_youtube']
         estatistica = data_videos.loc[video-1,'Nome_Stat_Video']
+        visitante_data = data_videos.loc[video-1,'Visitante_Data']
         legenda = estatistica+':'
     # Create a VideoCapture object
+        if url == 'Null':
+            st.write(f'Não há vídeos de {estatistica} para a partida vs. {visitante_data})
         st.write(legenda)
         st.video(url)
 
