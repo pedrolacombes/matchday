@@ -219,7 +219,7 @@ with tab1:
   # Criando tabela geral
 
   lista_estatisticas = ['Gol', 'Assistência', 'Toque', 'Passe Certo','% Passes certos', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Perdas de posse', 'Duelo no Chão', '% Duelos no chão vencidos', 'Duelo Aéreo', '% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta cometida', 'Falta sofrida', 'Cartão Amarelo', 'Cartão Vermelho']
-  Scouts = [dic_stat['Gol'], dic_stat['Assistência'], dic_stat['Toque'], dic_stat['Passe Certo'],dic_stat['% Passes certos'], dic_stat['Finalização'], dic_stat['Finalização no gol'], dic_stat['Finalização para fora'], dic_stat['Finalização bloqueada'], dic_stat['Perdas de posse'], dic_stat['Duelo no Chão'], dic_stat['% Duelos no chão vencidos'], dic_stat['Duelo Aéreo'], dic_stat['% Duelos aéreos vencidos'], dic_stat['Desarme'], dic_stat['Corte'], dic_stat['Bloqueio de chute'], dic_stat['Falta cometida'], dic_stat['Falta sofrida'], dic_stat['Cartão Amarelo'], dic_stat['Cartão Vermelho']]
+  Scouts = list(dic_stat.values())
   Partidas = list(dic_stat['Passe'].keys())
   adversario = list(
     dicionario_partidas_visitantes.values())  ## quando coloco essa variavel dentro do dataframe ele passa a nao entender os valores porque acho que estao em dicionarios diferentes
