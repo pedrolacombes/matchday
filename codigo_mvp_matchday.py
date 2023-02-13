@@ -286,10 +286,10 @@ with tab3:
 
   # Desenhando eventos de opção selecionada
 
-    for i in range(len(my_df)):
-
-        if option_stat_mapa == 'Passes':
+    if option_stat_mapa == 'Passes':
             distancia = st.slider('Passes que ganharam pelo menos x metros de campo', -45, 45, 1)
+
+    for i in range(len(my_df)):
         
         if option_stat_mapa == 'Passes':
             if my_df['Nome_Pass_Outcome'][i] == 'Passe Certo' and ((my_df['x_end'][i]-my_df['x_start'][i])>distancia):
