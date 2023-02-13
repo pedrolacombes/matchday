@@ -236,7 +236,7 @@ with tab1:
 
 with tab3:
   
-  tab5, tab6 = st.tabs(['Heat Map','Event Map'])
+  tab5, tab6 = st.tabs(['Event Map','Heat Map'])
   
   # Desenhando o mapa de passes
   with tab5:
