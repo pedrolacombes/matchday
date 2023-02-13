@@ -293,8 +293,8 @@ with tab3:
                 ax.plot(int(my_df["x_end"][i]), int(my_df["y_end"][i]), "o", color="red")
             ax.plot(0,26,'o',color='blue')
             ax.plot(0,27,'o',color='red')
-            ax.text(2,26,'Passes certos',fontsize=9)
-            ax.text(2,27,'Passes errados', fontsize=9)
+            ax.text(1,25.5,'Passes certos',fontsize=6)
+            ax.text(1,26.5,'Passes errados', fontsize=6)
             
         if option_stat_mapa == 'Finalizacoes':
             if my_df['Nome_Finalizacao_Outcome'][i] == 'Finalização bloqueada':
