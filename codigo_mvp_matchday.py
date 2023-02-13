@@ -230,7 +230,7 @@ with tab1:
   df_mapping = pd.DataFrame(sorting)
   sort_mapping  = df_mapping.reset_index().set_index('estatística')
   st.dataframe(sort_mapping)
-  df_data['ordem'] = df.index.map(sort_mapping['estatística'])
+  df_data['ordem'] = df_data.index.map(sort_mapping['index'])
   df_data.sort_values('ordem')
   st.dataframe(df_data)
 
