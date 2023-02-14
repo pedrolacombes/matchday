@@ -504,7 +504,28 @@ with tab3:
             st.video(url)
             
 with tab6:
-    # first, we'll create a new figure and axis object
+    
+# sample data
+
+	data = [
+        	{'id': 'player10', 'shots': 1, 'passes': 79, 'goals': 0, 'assists': 1},
+        	{'id': 'player9', 'shots': 2, 'passes': 72, 'goals': 0, 'assists': 1},
+        	{'id': 'player8', 'shots': 3, 'passes': 47, 'goals': 0, 'assists': 0},
+        	{'id': 'player7', 'shots': 4, 'passes': 99, 'goals': 0, 'assists': 5},
+        	{'id': 'player6', 'shots': 5, 'passes': 84, 'goals': 1, 'assists': 4},
+        	{'id': 'player5', 'shots': 6, 'passes': 56, 'goals': 2, 'assists': 0},
+        	{'id': 'player4', 'shots': 7, 'passes': 67, 'goals': 0, 'assists': 3},
+        	{'id': 'player3', 'shots': 8, 'passes': 91, 'goals': 1, 'assists': 1},
+        	{'id': 'player2', 'shots': 9, 'passes': 75, 'goals': 3, 'assists': 2},
+        	{'id': 'player1', 'shots': 10, 'passes': 70, 'goals': 4, 'assists': 0}
+	]
+
+
+
+
+
+
+# first, we'll create a new figure and axis object
 
     fig, ax = plt.subplots(figsize=(8,6))
 
