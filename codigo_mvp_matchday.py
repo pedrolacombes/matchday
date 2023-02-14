@@ -527,28 +527,28 @@ with tab6:
 
 # first, we'll create a new figure and axis object
 
-    fig, ax = plt.subplots(figsize=(8,6))
+	fig, ax = plt.subplots(figsize=(8,6))
 
 # set the number of rows and cols for our table
 
-    rows = 10
-    cols = 5
+    	rows = 10
+    	cols = 5
 
 # create a coordinate system based on the number of rows/columns
 
 # adding a bit of padding on bottom (-1), top (1), right (0.5)
 
-    ax.set_ylim(-1, rows + 1)
-    ax.set_xlim(0, cols + .5)
+    	ax.set_ylim(-1, rows + 1)
+    	ax.set_xlim(0, cols + .5)
 
 # from the sample data, each dict in the list represents one row
 
 # each key in the dict represents a column
 
-    for row in range(rows):
+    	for row in range(rows):
 	# extract the row data from the list
 
-        d = data[row]
+        	d = data[row]
 
     # the y (row) coordinate is based on the row index (loop)
 
@@ -557,19 +557,19 @@ with tab6:
 
     # player name column
 
-        ax.text(x=.5, y=row, s=d['id'], va='center', ha='left')
+        	ax.text(x=.5, y=row, s=d['id'], va='center', ha='left')
     # shots column - this is my "main" column, hence bold text
 
-        ax.text(x=2, y=row, s=d['shots'], va='center', ha='right', weight='bold')
+        	ax.text(x=2, y=row, s=d['shots'], va='center', ha='right', weight='bold')
     # passes column
 
-        ax.text(x=3, y=row, s=d['passes'], va='center', ha='right')
+        	ax.text(x=3, y=row, s=d['passes'], va='center', ha='right')
     # goals column
 
-        ax.text(x=4, y=row, s=d['goals'], va='center', ha='right')
+        	ax.text(x=4, y=row, s=d['goals'], va='center', ha='right')
     # assists column
 
-        ax.text(x=5, y=row, s=d['assists'], va='center', ha='right')
+        	ax.text(x=5, y=row, s=d['assists'], va='center', ha='right')
 
     # Add column headers
 
@@ -577,20 +577,20 @@ with tab6:
 
 # first data row (you'll see why later)
 
-    ax.text(.5, 9.75, 'Player', weight='bold', ha='left')
-    ax.text(2, 9.75, 'Shots', weight='bold', ha='right')
-    ax.text(3, 9.75, 'Passes', weight='bold', ha='right')
-    ax.text(4, 9.75, 'Goals', weight='bold', ha='right')
-    ax.text(5, 9.75, 'Assists', weight='bold', ha='right')
+    	ax.text(.5, 9.75, 'Player', weight='bold', ha='left')
+    	ax.text(2, 9.75, 'Shots', weight='bold', ha='right')
+    	ax.text(3, 9.75, 'Passes', weight='bold', ha='right')
+    	ax.text(4, 9.75, 'Goals', weight='bold', ha='right')
+    	ax.text(5, 9.75, 'Assists', weight='bold', ha='right')
 
-    for row in range(rows):
-        ax.plot(
-    	    [0, cols + 1],
-    	    [row -.5, row - .5],
-    	    ls=':',
-    	    lw='.5',
-    	    c='grey'
-        )
+    	for row in range(rows):
+        	ax.plot(
+    	    	[0, cols + 1],
+    	    	[row -.5, row - .5],
+    	    	ls=':',
+    	    	lw='.5',
+    	    	c='grey'
+        	)
 
 # add a main header divider
 
@@ -602,6 +602,6 @@ with tab6:
 
 # gridline gives it a distinctive difference.
 
-    ax.plot([0, cols + 1], [9.5, 9.5], lw='.5', c='black')
+    	ax.plot([0, cols + 1], [9.5, 9.5], lw='.5', c='black')
 
-    fig
+    	fig
