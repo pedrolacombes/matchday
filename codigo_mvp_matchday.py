@@ -504,8 +504,10 @@ with tab3:
             st.video(url)
 
 
-tab7, tab8 = st.tabs(['Melhores Jogadores', 'Compare'])	
+	
 with tab6:
+	
+	tab7, tab8 = st.tabs(['Melhores Jogadores', 'Compare'])
 	
 	with tab7:
 
