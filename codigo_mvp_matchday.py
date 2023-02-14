@@ -510,6 +510,9 @@ with tab6:
 	tab7, tab8 = st.tabs(['Melhores Jogadores', 'Compare'])
 	
 	with tab7:
+		
+		Estatistica = st.selectbox('Selecione uma estatística:',stats)
+		option_partidas_videos = st.multiselect('Selecione as partidas', filtros_partidas_videos)
 
 			# sample data
 
