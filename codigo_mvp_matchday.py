@@ -512,7 +512,8 @@ with tab6:
 	with tab7:
 		
 		stats_ranking = ['Classificação média Matchday', 'Gol + Assistência', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Toque', 'Passe certo', '% Passe certo', 'Drible bem sucedido', 'Perda de posse', 'Duelo no chão ganho', 'Duelo aéreo ganho', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta sofrida', 'Falta cometida', 'Cartão Amarelo', 'Cartão Vermelho']
-		Partida_ranking = st.multiselect('Selecione as partidas', filtros_partidas_videos)
+		filtros_partidas_ranking = list(dicionario_partidas_visitantes.values())
+		Partida_ranking = st.multiselect('Selecione as partidas', filtros_partidas_ranking)
 		Estatistica = st.selectbox('Selecione uma estatística:',stats_ranking)
 		tipos_ordem = ['Total', 'Por jogo']
 		Ordem = st.selectbox('Ordenar por:', tipos_ordem)
