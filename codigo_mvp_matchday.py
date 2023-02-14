@@ -511,41 +511,47 @@ with tab6:
 	
 	with tab7:
 		
+		# Colocando os filtros na tela
+		
 		stats_ranking = ['Classificação média Matchday', 'Gol + Assistência', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Toque', 'Passe certo', '% Passe certo', 'Drible bem sucedido', 'Perda de posse', 'Duelo no chão ganho', 'Duelo aéreo ganho', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta sofrida', 'Falta cometida', 'Cartão Amarelo', 'Cartão Vermelho']
 		Estatistica = st.selectbox('Selecione uma estatística:',stats_ranking)
 		tipos_ordem = ['Total', 'Por jogo']
 		Ordem = st.selectbox('Ordenar por:', tipos_ordem)
+		
+		if Ordem == 'Total':
+			Ordem = 'Total_Estatistica_Ranking'
+		else:
+			Ordem = 'Media_Estatistica_Ranking'
 
-			# sample data
+		# Puxando o arquivo com a base ranking
 
-		data = [
-			{'id': 'player10', 'shots': 1, 'passes': 79, 'goals': 0, 'assists': 1},
-			{'id': 'player9', 'shots': 2, 'passes': 72, 'goals': 0, 'assists': 1},
-			{'id': 'player8', 'shots': 3, 'passes': 47, 'goals': 0, 'assists': 0},
-			{'id': 'player7', 'shots': 4, 'passes': 99, 'goals': 0, 'assists': 5},
-			{'id': 'player6', 'shots': 5, 'passes': 84, 'goals': 1, 'assists': 4},
-			{'id': 'player5', 'shots': 6, 'passes': 56, 'goals': 2, 'assists': 0},
-			{'id': 'player4', 'shots': 7, 'passes': 67, 'goals': 0, 'assists': 3},
-			{'id': 'player3', 'shots': 8, 'passes': 91, 'goals': 1, 'assists': 1},
-			{'id': 'player2', 'shots': 9, 'passes': 75, 'goals': 3, 'assists': 2},
-			{'id': 'player1', 'shots': 10, 'passes': 70, 'goals': 4, 'assists': 0}
-		]
+		sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
+		sheet_name = 'Ranking'
+		url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+		data = pd.read_csv(url)
+		data.head()
+		
+		# Alterando dataframe para estatística selecionada
+		data = data[data['Nome_Estatistica_Ranking'] == Estatistica]
+		data.sort_values(by=[Ordem], ascending=True, inplace=True)
+		data.reset_index(inplace = True)
+		data.drop(['index'],inplace=True, axis=1)
+		
+		# Criando figura
 
-		# first, we'll create a new figure and axis object
+		fig, ax = plt.subplots(figsize=(7,6))
 
-		fig, ax = plt.subplots(figsize=(8,6))
+		# Definindo número de linhas e colunas
 
-		# set the number of rows and cols for our table
-
-		cols = 5
+		cols = 4
 		rows = 10
 
-		# create a coordinate system based on the number of rows/columns
+		# Criar coordenadas com base no número de linhas e colunas
 
-		# adding a bit of padding on bottom (-1), top (1), right (0.5)
+		# Adicionando bordas
 
 		ax.set_ylim(-1, rows + 1)
-		ax.set_xlim(0, cols + .5)
+		ax.set_xlim(0.25, cols-0.5)
 
 		# from the sample data, each dict in the list represents one row
 
@@ -554,28 +560,29 @@ with tab6:
 		for row in range(rows):
 			# extract the row data from the list
 
-		    d = data[row]
+		    d = data.loc[row]
 
 		    # the y (row) coordinate is based on the row index (loop)
 
 		    # the x (column) coordinate is defined based on the order I want to display the data in
 
 
-		    # player name column
+		    # posicao column
 
-		    ax.text(x=.5, y=row, s=d['id'], va='center', ha='left')
-		    # shots column - this is my "main" column, hence bold text
+		    ax.text(x=.5, y=row, s=10-row, va='center', ha='right')
 
-		    ax.text(x=2, y=row, s=d['shots'], va='center', ha='right', weight='bold')
-		    # passes column
+		    # nome jogador column
 
-		    ax.text(x=3, y=row, s=d['passes'], va='center', ha='right')
-		    # goals column
+		    ax.text(x=1.5, y=row, s=d['Nome_Jogador'], va='center', ha='right')
 
-		    ax.text(x=4, y=row, s=d['goals'], va='center', ha='right')
-		    # assists column
+		    # total column
 
-		    ax.text(x=5, y=row, s=d['assists'], va='center', ha='right')
+		    ax.text(x=2.5, y=row, s=d['Total_Estatistica_Ranking'], va='center', ha='right')
+
+		    # media column
+
+		    ax.text(x=3.5, y=row, s=d['Media_Estatistica_Ranking'], va='center', ha='right')
+
 
 		    # Add column headers
 
@@ -583,15 +590,14 @@ with tab6:
 
 		# first data row (you'll see why later)
 
-		ax.text(.5, 9.75, 'Player', weight='bold', ha='left')
-		ax.text(2, 9.75, 'Shots', weight='bold', ha='right')
-		ax.text(3, 9.75, 'Passes', weight='bold', ha='right')
-		ax.text(4, 9.75, 'Goals', weight='bold', ha='right')
-		ax.text(5, 9.75, 'Assists', weight='bold', ha='right')
+		ax.text(0.5, 9.75, 'Posição', weight='bold', ha='center')
+		ax.text(1.5, 9.75, 'Player', weight='bold', ha='right')
+		ax.text(2.5, 9.75, 'Total', weight='bold', ha='right')
+		ax.text(3.5, 9.75, 'Média / Jogo', weight='bold', ha='right')
 
 		for row in range(rows):
 		    ax.plot(
-			[0, cols + 1],
+			[0.25, cols-0.5],
 			[row -.5, row - .5],
 			ls=':',
 			lw='.5',
@@ -608,10 +614,10 @@ with tab6:
 
 		# gridline gives it a distinctive difference.
 
-		ax.plot([0, cols + 1], [9.5, 9.5], lw='.5', c='black')
+		ax.plot([0.25, cols-0.5], [9.5, 9.5], lw='.5', c='black')
 
 		ax.axis('off')
-
+		
 		fig
 	
 	with tab8:
