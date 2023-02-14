@@ -502,7 +502,9 @@ with tab3:
             legenda = estatistica+' vs. '+visitante_data+':'
             st.write(legenda)
             st.video(url)
-            
+
+
+tab7, tab8 = st.tabs(['Melhores Jogadores', 'Compare'])	
 with tab6:
 
 		# sample data
