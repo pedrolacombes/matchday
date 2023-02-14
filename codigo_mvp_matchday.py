@@ -598,5 +598,7 @@ with tab6:
 	# gridline gives it a distinctive difference.
 
 	ax.plot([0, cols + 1], [9.5, 9.5], lw='.5', c='black')
+	
+	ax.axis('off')
 
 	fig
