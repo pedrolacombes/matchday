@@ -527,6 +527,7 @@ with tab6:
 	# set the number of rows and cols for our table
 
 	cols = 5
+	rows = 10
 
 	# create a coordinate system based on the number of rows/columns
 
