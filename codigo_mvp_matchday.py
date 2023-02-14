@@ -615,4 +615,6 @@ with tab6:
 		fig
 	
 	with tab8:
-		st.write('Em construção')
+		lista_jogadores = ['Samir', 'Lucas', 'Pedro', 'Fernando', 'Luiz', 'João', 'Felipe']
+		jodador1 = st.selectbox('Selecione o primeiro jogador:', lista_jogadores)
+		jogador2 = st.selectbox('Selecione o segundo jogador:', lista_jogadores)
