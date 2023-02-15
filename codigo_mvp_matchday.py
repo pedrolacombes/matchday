@@ -666,11 +666,11 @@ with tab6:
 
 		for stat_comp in lista_stats_comp:
 			stat_jogador1 = data_jogador1.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
-		  	stat_jogador2 = data_jogador2.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
-		  	ax.text(x=0.5, y=linha, s=stat_jogador1, va='center', ha='right')
-		  	ax.text(x=2.25, y=linha, s=stat_jogador2, va='center', ha='right')
-		  	ax.text(x=1.325, y=linha, s=stat_comp+' por jogo', va='center', ha='center')
-		  	linha = linha - 1
+			stat_jogador2 = data_jogador2.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
+			ax.text(x=0.5, y=linha, s=stat_jogador1, va='center', ha='right')
+			ax.text(x=2.25, y=linha, s=stat_jogador2, va='center', ha='right')
+			ax.text(x=1.325, y=linha, s=stat_comp+' por jogo', va='center', ha='center')
+			linha = linha - 1
 
 		# colocando cabeçalho
 		ax.text(0.5, 20.75, Jogador1, weight='bold', ha='right')
