@@ -622,5 +622,50 @@ with tab6:
 	
 	with tab8:
 		lista_jogadores = ['Samir', 'Lucas', 'Pedro', 'Fernando', 'Luiz', 'João', 'Felipe']
-		jodador1 = st.selectbox('Selecione o primeiro jogador:', lista_jogadores)
-		jogador2 = st.selectbox('Selecione o segundo jogador:', lista_jogadores)
+		Jogador1 = st.selectbox('Selecione o primeiro jogador:', lista_jogadores)
+		Jogador2 = st.selectbox('Selecione o segundo jogador:', lista_jogadores)
+		
+		# Definindo a lista de estatísticas de comparação
+		lista_stats_comp = ['Classificação média Matchday', 'Gol + Assistência', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Toque', 'Passe certo', '% Passe certo', 'Drible bem sucedido', 'Perda de posse', 'Duelo no chão ganho', 'Duelo aéreo ganho', 'Corte', 'Desarme', 'Bloqueio de chute', 'Falta sofrida', 'Falta cometida', 'Cartão Amarelo', 'Cartão Vermelho']
+		
+		# Criando figura
+
+		fig, ax = plt.subplots(figsize=(8,20))
+
+		# Definindo número de linhas e colunas
+
+		cols = 3
+		rows = 20
+
+		# Criar coordenadas com base no número de linhas e colunas
+
+		# Adicionando bordas
+
+		ax.set_ylim(-1, rows + 1)
+		ax.set_xlim(0.25, cols-0.5)
+
+		# setando a linha inicial
+
+		linha = 20
+
+		# loop para preencher a tabela chamando as estatísticas
+
+		for stat_comp in lista_stats_comp:
+		  stat_jogador1 = data_jogador1.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
+		  stat_jogador2 = data_jogador2.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
+		  ax.text(x=0.5, y=linha, s=stat_jogador1, va='center', ha='right')
+		  ax.text(x=2.25, y=linha, s=stat_jogador2, va='center', ha='right')
+		  ax.text(x=1.325, y=linha, s=stat_comp+' por jogo', va='center', ha='center')
+		  linha = linha - 1
+
+		# colocando cabeçalho
+		ax.text(0.5, 20.75, Jogador1, weight='bold', ha='right')
+		ax.text(1.325, 20.75, 'Stat', weight='bold', ha='center')
+		ax.text(2.25, 20.75, Jogador2, weight='bold', ha='right')
+		ax.plot([0.25, cols-0.62], [20.5, 20.5], lw='.5', c='black')
+
+		# tirando eixos
+		ax.axis('off')
+
+		#plotando figura streamlit
+		fig
