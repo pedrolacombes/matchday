@@ -621,9 +621,23 @@ with tab6:
 		fig
 	
 	with tab8:
+		
+		# Puxando o arquivo com a base comparação
+
+		sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
+		sheet_name = 'Ranking'
+		url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+		data = pd.read_csv(url)
+		data.head()
+		
+		# Criando select box nome dos jogadores		
 		lista_jogadores = ['Samir', 'Lucas', 'Pedro', 'Fernando', 'Luiz', 'João', 'Felipe']
 		Jogador1 = st.selectbox('Selecione o primeiro jogador:', lista_jogadores)
 		Jogador2 = st.selectbox('Selecione o segundo jogador:', lista_jogadores)
+		
+		# Criando dataframe para jogadores selecionados
+		data_jogador1 = data[(data['Nome_Jogador'] == Jogador1)]
+		data_jogador2 = data[(data['Nome_Jogador'] == Jogador2)]
 		
 		# Definindo a lista de estatísticas de comparação
 		lista_stats_comp = ['Classificação média Matchday', 'Gol + Assistência', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Toque', 'Passe certo', '% Passe certo', 'Drible bem sucedido', 'Perda de posse', 'Duelo no chão ganho', 'Duelo aéreo ganho', 'Corte', 'Desarme', 'Bloqueio de chute', 'Falta sofrida', 'Falta cometida', 'Cartão Amarelo', 'Cartão Vermelho']
@@ -651,12 +665,12 @@ with tab6:
 		# loop para preencher a tabela chamando as estatísticas
 
 		for stat_comp in lista_stats_comp:
-		  stat_jogador1 = data_jogador1.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
-		  stat_jogador2 = data_jogador2.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
-		  ax.text(x=0.5, y=linha, s=stat_jogador1, va='center', ha='right')
-		  ax.text(x=2.25, y=linha, s=stat_jogador2, va='center', ha='right')
-		  ax.text(x=1.325, y=linha, s=stat_comp+' por jogo', va='center', ha='center')
-		  linha = linha - 1
+			stat_jogador1 = data_jogador1.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
+		  	stat_jogador2 = data_jogador2.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
+		  	ax.text(x=0.5, y=linha, s=stat_jogador1, va='center', ha='right')
+		  	ax.text(x=2.25, y=linha, s=stat_jogador2, va='center', ha='right')
+		  	ax.text(x=1.325, y=linha, s=stat_comp+' por jogo', va='center', ha='center')
+		  	linha = linha - 1
 
 		# colocando cabeçalho
 		ax.text(0.5, 20.75, Jogador1, weight='bold', ha='right')
