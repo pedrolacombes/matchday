@@ -57,7 +57,7 @@ with tab1:
 
 
   # Filtrando base geral para infos da partida selecionada
-	partida_selecionada = 'Canela vs. TBC - 7/3/2018'
+	partida_selecionada = lista_selecao_partidas
 	id_partida_selecionada = bd_partidas.loc[bd_partidas['Nome_Completo_Partida'] == partida_selecionada, 'Index_Partida'].values[0]
 	bd_partida_selecionada = bd_geral[bd_geral['Index_Partida']==id_partida_selecionada]
 	bd_partida_selecionada.reset_index(inplace = True)
