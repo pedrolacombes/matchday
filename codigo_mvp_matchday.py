@@ -38,158 +38,167 @@ tab1, tab2, tab3, tab6= st.tabs(['Tabela Geral','Mapas','Videos', 'Ranking'])
 # montando pagina do tabelao
 
 with tab1:
-
-  # Alterando dataframe para pegar apenas linhas com informação
-	bd_geral = my_df[my_df['Nome_Jogador'] == 'Samir']
-	bd_geral.reset_index(inplace = True)
-
-
-  # Puxando a base de partidas
-	sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
-	sheet_name = 'Partidas'
-	url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
-	bd_partidas = pd.read_csv(url)
-
-  # Definindo lista de partidas que podem ser selecionadas
-	lista_partidas_selecionaveis = bd_partidas.Nome_Completo_Partida.unique()
-	lista_partidas_selecionaveis = lista_partidas_selecionaveis.tolist()
-	lista_selecao_partidas = st.selectbox('Selecione uma partida', lista_partidas_selecionaveis)
-
-
-  # Filtrando base geral para infos da partida selecionada
-	partida_selecionada = lista_selecao_partidas
-	id_partida_selecionada = bd_partidas.loc[bd_partidas['Nome_Completo_Partida'] == partida_selecionada, 'Index_Partida'].values[0]
-	bd_partida_selecionada = bd_geral[bd_geral['Index_Partida']==id_partida_selecionada]
-	bd_partida_selecionada.reset_index(inplace = True)
 	
-  # Declarando as variáveis da tabela
-  # Definindo dicionário para stats da coluna nome_ato
-	stats_nome_ato = ['Passe', 'Finalização', 'Corte', 'Cartão Amarelo', 'Cartão Vermelho', 'Bloqueio de chute','Desarme', 'Drible', 'Falta cometida', 'Falta sofrida', 'Perda de posse']
+	tab9, tab10, tab11 = st.tabs(['Resumo', 'Stats Overview', 'Partidas'])
+	
+	with tab9:
+		st.write('Em construção')
+	
+	with tab10:
+		st.write('Em construção')
 
-	dicionario_nome_ato = {stat: sum(bd_partida_selecionada.Nome_Ato == stat) for stat in stats_nome_ato}
+	with tab11:
 
-  # Definindo dicionário para stats da coluna finalizacao_outcome
-	stats_finalizacao_outcome = ['Finalização no gol', 'Finalização para fora', 'Finalização bloqueada']
+	  # Alterando dataframe para pegar apenas linhas com informação
+		bd_geral = my_df[my_df['Nome_Jogador'] == 'Samir']
+		bd_geral.reset_index(inplace = True)
 
-	dicionario_finalizacao_outcome = {stat: sum(bd_partida_selecionada.Nome_Finalizacao_Outcome == stat) for stat in stats_finalizacao_outcome}
+	  # Puxando a base de partidas
+		sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
+		sheet_name = 'Partidas'
+		url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+		bd_partidas = pd.read_csv(url)
 
-  # Definindo dicionário para stats da coluna pass_outcome
-	stats_pass_outcome = ['Passe Certo', 'Passe Errado']
+	  # Definindo lista de partidas que podem ser selecionadas
+		lista_partidas_selecionaveis = bd_partidas.Nome_Completo_Partida.unique()
+		lista_partidas_selecionaveis = lista_partidas_selecionaveis.tolist()
+		lista_selecao_partidas = st.selectbox('Selecione uma partida', lista_partidas_selecionaveis)
 
-	dicionario_pass_outcome = {stat: sum(bd_partida_selecionada.Nome_Pass_Outcome == stat) for stat in stats_pass_outcome}
 
-  # Definindo dicionário para stats da coluna nome_duelo
-	stats_nome_duelo = ['Duelo no Chão', 'Duelo Aéreo']
+	  # Filtrando base geral para infos da partida selecionada
+		partida_selecionada = lista_selecao_partidas
+		id_partida_selecionada = bd_partidas.loc[bd_partidas['Nome_Completo_Partida'] == partida_selecionada, 'Index_Partida'].values[0]
+		bd_partida_selecionada = bd_geral[bd_geral['Index_Partida']==id_partida_selecionada]
+		bd_partida_selecionada.reset_index(inplace = True)
 
-	dicionario_nome_duelo = {stat: sum(bd_partida_selecionada.Nome_Duelo == stat) for stat in stats_nome_duelo}
+	  # Declarando as variáveis da tabela
+	  # Definindo dicionário para stats da coluna nome_ato
+		stats_nome_ato = ['Passe', 'Finalização', 'Corte', 'Cartão Amarelo', 'Cartão Vermelho', 'Bloqueio de chute','Desarme', 'Drible', 'Falta cometida', 'Falta sofrida', 'Perda de posse']
 
-  # Definindo dicionário para stats da coluna duelo_outcome
-	stats_duelo_outcome = ['Duelo no Chão Ganho', 'Duelo Aéreo Ganho', 'Duelo no chão perdido', 'Duelo aéreo perdido']
+		dicionario_nome_ato = {stat: sum(bd_partida_selecionada.Nome_Ato == stat) for stat in stats_nome_ato}
 
-	dicionario_duelo_outcome = {stat: sum(bd_partida_selecionada.Nome_Duelo_Outcome == stat) for stat in stats_duelo_outcome}
+	  # Definindo dicionário para stats da coluna finalizacao_outcome
+		stats_finalizacao_outcome = ['Finalização no gol', 'Finalização para fora', 'Finalização bloqueada']
 
-  # Definindo dicionário para stats da colune index_gol
-	stat_index_gol = 1
+		dicionario_finalizacao_outcome = {stat: sum(bd_partida_selecionada.Nome_Finalizacao_Outcome == stat) for stat in stats_finalizacao_outcome}
 
-	dicionario_index_gol = {'Gol': sum(bd_partida_selecionada.Index_Gol == stat_index_gol)}
+	  # Definindo dicionário para stats da coluna pass_outcome
+		stats_pass_outcome = ['Passe Certo', 'Passe Errado']
 
-  # Definindo dicionário para stats da coluna index_assistencia
-	stat_index_assist = 1
+		dicionario_pass_outcome = {stat: sum(bd_partida_selecionada.Nome_Pass_Outcome == stat) for stat in stats_pass_outcome}
 
-	dicionario_index_assist = {'Assistência': sum(bd_partida_selecionada.Index_Assist == stat_index_assist)}
+	  # Definindo dicionário para stats da coluna nome_duelo
+		stats_nome_duelo = ['Duelo no Chão', 'Duelo Aéreo']
 
-  # Definindo dicionário para stats da coluna index_toque
-	stat_index_toque = 1
+		dicionario_nome_duelo = {stat: sum(bd_partida_selecionada.Nome_Duelo == stat) for stat in stats_nome_duelo}
 
-	dicionario_index_toque = {'Toque': sum(bd_partida_selecionada.Index_Toque == stat_index_toque)}
+	  # Definindo dicionário para stats da coluna duelo_outcome
+		stats_duelo_outcome = ['Duelo no Chão Ganho', 'Duelo Aéreo Ganho', 'Duelo no chão perdido', 'Duelo aéreo perdido']
 
-  # Definindo dicionário para stats da coluna index_passe_longo
-	stat_index_passe_longo = 1
+		dicionario_duelo_outcome = {stat: sum(bd_partida_selecionada.Nome_Duelo_Outcome == stat) for stat in stats_duelo_outcome}
 
-	dicionario_index_passe_longo = {'Passe Longo': sum(bd_partida_selecionada.Index_Passe_Longo == stat_index_passe_longo)}
+	  # Definindo dicionário para stats da colune index_gol
+		stat_index_gol = 1
 
-  # Definindo dicionário para % de passes certos
-	lista_percentual_passe_certo = dicionario_pass_outcome['Passe Certo'] / dicionario_nome_ato['Passe']
-	lista_percentual_passe_certo = '{:.1%}'.format(lista_percentual_passe_certo)
+		dicionario_index_gol = {'Gol': sum(bd_partida_selecionada.Index_Gol == stat_index_gol)}
 
-	dicionario_percent_passes_certo = {'% Passes certos': lista_percentual_passe_certo}
+	  # Definindo dicionário para stats da coluna index_assistencia
+		stat_index_assist = 1
 
-  # Definindo dicionário para % de duelos aéreos ganhos
-	lista_percentual_duelos_aereos_vencidos = dicionario_duelo_outcome['Duelo Aéreo Ganho'] / dicionario_nome_duelo['Duelo Aéreo']
-	lista_percentual_duelos_aereos_vencidos = '{:.1%}'.format(lista_percentual_duelos_aereos_vencidos)
+		dicionario_index_assist = {'Assistência': sum(bd_partida_selecionada.Index_Assist == stat_index_assist)}
 
-	dicionario_percent_duelos_aereos_vencidos = {'% Duelos aéreos vencidos': lista_percentual_duelos_aereos_vencidos}
+	  # Definindo dicionário para stats da coluna index_toque
+		stat_index_toque = 1
 
-  # Definindo dicionário para % de duelos no chão ganhos
-	lista_percentual_duelos_no_chao_vencidos = dicionario_duelo_outcome['Duelo no Chão Ganho'] / dicionario_nome_duelo['Duelo no Chão']
-	lista_percentual_duelos_no_chao_vencidos = '{:.1%}'.format(lista_percentual_duelos_no_chao_vencidos)
+		dicionario_index_toque = {'Toque': sum(bd_partida_selecionada.Index_Toque == stat_index_toque)}
 
-	dicionario_percent_duelos_no_chao_vencidos = {'% Duelos no chão vencidos': lista_percentual_duelos_no_chao_vencidos}
+	  # Definindo dicionário para stats da coluna index_passe_longo
+		stat_index_passe_longo = 1
 
-  # Definindo dicionário gols + assistências
-	gols_assistencias = dicionario_index_gol['Gol'] + dicionario_index_assist['Assistência']
+		dicionario_index_passe_longo = {'Passe Longo': sum(bd_partida_selecionada.Index_Passe_Longo == stat_index_passe_longo)}
 
-	dicionario_gol_assist = {'Gols + Assistências': gols_assistencias}
+	  # Definindo dicionário para % de passes certos
+		lista_percentual_passe_certo = dicionario_pass_outcome['Passe Certo'] / dicionario_nome_ato['Passe']
+		lista_percentual_passe_certo = '{:.1%}'.format(lista_percentual_passe_certo)
 
-  # Definindo dicionário classificação média matchday
-	dicionario_clas_matchday = {'Classificação média Matchday': 7.9}
+		dicionario_percent_passes_certo = {'% Passes certos': lista_percentual_passe_certo}
 
-  # Juntando os diversos dicionários em um único para o gráfico de evolução
-	Dicionario_evolucao = {**dicionario_duelo_outcome, **dicionario_finalizacao_outcome, **dicionario_index_assist,
-			       **dicionario_index_gol, **dicionario_index_passe_longo, **dicionario_index_toque,
-			       **dicionario_nome_ato, **dicionario_nome_duelo, **dicionario_pass_outcome,
-			       **dicionario_percent_duelos_aereos_vencidos, **dicionario_percent_duelos_no_chao_vencidos,
-			       **dicionario_percent_passes_certo, **dicionario_gol_assist, **dicionario_clas_matchday}
+	  # Definindo dicionário para % de duelos aéreos ganhos
+		lista_percentual_duelos_aereos_vencidos = dicionario_duelo_outcome['Duelo Aéreo Ganho'] / dicionario_nome_duelo['Duelo Aéreo']
+		lista_percentual_duelos_aereos_vencidos = '{:.1%}'.format(lista_percentual_duelos_aereos_vencidos)
 
-  # Plotando as informações da partida em uma tabela
+		dicionario_percent_duelos_aereos_vencidos = {'% Duelos aéreos vencidos': lista_percentual_duelos_aereos_vencidos}
 
-  #Definindo lista de estatisticas em ordem
-	stats = ['Classificação média Matchday', 'Gols + Assistências', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toque', 'Passe Certo', '% Passes certos', 
-		 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão vencidos', 'Duelo Aéreo Ganho','% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta sofrida', 'Falta cometida', 
-		 'Cartão Amarelo', 'Cartão Vermelho']
+	  # Definindo dicionário para % de duelos no chão ganhos
+		lista_percentual_duelos_no_chao_vencidos = dicionario_duelo_outcome['Duelo no Chão Ganho'] / dicionario_nome_duelo['Duelo no Chão']
+		lista_percentual_duelos_no_chao_vencidos = '{:.1%}'.format(lista_percentual_duelos_no_chao_vencidos)
 
-  # Criando figura
+		dicionario_percent_duelos_no_chao_vencidos = {'% Duelos no chão vencidos': lista_percentual_duelos_no_chao_vencidos}
 
-	fig, ax = plt.subplots(figsize=(8,24))
+	  # Definindo dicionário gols + assistências
+		gols_assistencias = dicionario_index_gol['Gol'] + dicionario_index_assist['Assistência']
 
-  # Definindo número de linhas e colunas
+		dicionario_gol_assist = {'Gols + Assistências': gols_assistencias}
 
-	cols = 3
-	rows = 24
+	  # Definindo dicionário classificação média matchday
+		dicionario_clas_matchday = {'Classificação média Matchday': 7.9}
 
-  # Criar coordenadas com base no número de linhas e colunas
+	  # Juntando os diversos dicionários em um único para o gráfico de evolução
+		Dicionario_evolucao = {**dicionario_duelo_outcome, **dicionario_finalizacao_outcome, **dicionario_index_assist,
+				       **dicionario_index_gol, **dicionario_index_passe_longo, **dicionario_index_toque,
+				       **dicionario_nome_ato, **dicionario_nome_duelo, **dicionario_pass_outcome,
+				       **dicionario_percent_duelos_aereos_vencidos, **dicionario_percent_duelos_no_chao_vencidos,
+				       **dicionario_percent_passes_certo, **dicionario_gol_assist, **dicionario_clas_matchday}
 
-  # Adicionando bordas
+	  # Plotando as informações da partida em uma tabela
 
-	ax.set_ylim(-1, rows + 1)
-	ax.set_xlim(0.25, cols-0.5)
+	  #Definindo lista de estatisticas em ordem
+		stats = ['Classificação média Matchday', 'Gols + Assistências', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toque', 'Passe Certo', '% Passes certos', 
+			 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão vencidos', 'Duelo Aéreo Ganho','% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta sofrida', 'Falta cometida', 
+			 'Cartão Amarelo', 'Cartão Vermelho']
 
-  # setando a linha inicial
+	  # Criando figura
 
-	linha = 24
+		fig, ax = plt.subplots(figsize=(8,24))
 
-  # loop para preencher a tabela chamando as estatísticas
+	  # Definindo número de linhas e colunas
 
-	for stat in stats:
-		stat_valor = Dicionario_evolucao[stat]
-		ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
-		ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
-		linha = linha - 1
+		cols = 3
+		rows = 24
 
-  # colocando cabeçalho
-	ax.text(0.25, 24.75, 'Stat', weight='bold', ha='left')
-	ax.text(2.25, 24.75, 'Valor', weight='bold', ha='right')
-	ax.plot([0.25, cols-0.62], [24.5, 24.5], lw='.5', c='black')
+	  # Criar coordenadas com base no número de linhas e colunas
 
-	ax.plot([0.25, cols-0.62], [23.5, 23.5], lw='.2', c='gray')
-	ax.plot([0.25, cols-0.62], [16.5, 16.5], lw='.2', c='gray')
-	ax.plot([0.25, cols-0.62], [12.5, 12.5], lw='.2', c='gray')
-	ax.plot([0.25, cols-0.62], [5.5, 5.5], lw='.2', c='gray')
+	  # Adicionando bordas
 
-  # tirando eixos
-	ax.axis('off')
+		ax.set_ylim(-1, rows + 1)
+		ax.set_xlim(0.25, cols-0.5)
 
-	fig
+	  # setando a linha inicial
+
+		linha = 24
+
+	  # loop para preencher a tabela chamando as estatísticas
+
+		for stat in stats:
+			stat_valor = Dicionario_evolucao[stat]
+			ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
+			ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
+			linha = linha - 1
+
+	  # colocando cabeçalho
+		ax.text(0.25, 24.75, 'Stat', weight='bold', ha='left')
+		ax.text(2.25, 24.75, 'Valor', weight='bold', ha='right')
+		ax.plot([0.25, cols-0.62], [24.5, 24.5], lw='.5', c='black')
+
+		ax.plot([0.25, cols-0.62], [23.5, 23.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [16.5, 16.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [12.5, 12.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [5.5, 5.5], lw='.2', c='gray')
+
+	  # tirando eixos
+		ax.axis('off')
+
+		fig
 	
 with tab2:
   
