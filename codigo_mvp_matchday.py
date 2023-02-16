@@ -233,7 +233,7 @@ with tab1:
 		
 		for stat in stats:
 			stat_valor = Dicionario_evolucao[stat]
-			if type(stat_valor) != 'str':
+			if type(stat_valor) != str:
 				stat_valor = stat_valor / numero_jogos
 			ax.text(x=0.25, y=linha, s=stat+' por partida', va='center', ha='left')
 			ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
