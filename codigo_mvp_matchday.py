@@ -39,201 +39,160 @@ tab1, tab2, tab3, tab6= st.tabs(['Tabela Geral','Mapas','Videos', 'Ranking'])
 
 with tab1:
 
-  # Criar lista com lista única das partidas
-  Partidas = my_df.Index_Partida.unique()
-  Partidas = Partidas.tolist()
-  Partidas.sort()
+  # Alterando dataframe para pegar apenas linhas com informação
+	bd_geral = my_df[my_df['Nome_Jogador'] == 'Samir']
+	bd_geral.reset_index(inplace = True)
 
+
+  # Puxando a base de partidas
+	sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
+	sheet_name = 'Partidas'
+	url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
+	bd_partidas = pd.read_csv(url)
+	bd_partidas
+
+  # Definindo lista de partidas que podem ser selecionadas
+	lista_partidas_selecionaveis = bd_partidas.Nome_Completo_Partida.unique()
+	lista_partidas_selecionaveis = lista_partidas_selecionaveis.tolist()
+	lista_selecao_partidas = st.selectbox('Selecione uma partida', lista_partidas_selecionaveis)
+
+
+  # Filtrando base geral para infos da partida selecionada
+	partida_selecionada = 'Canela vs. TBC - 7/3/2018'
+	id_partida_selecionada = bd_partidas.loc[bd_partidas['Nome_Completo_Partida'] == partida_selecionada, 'Index_Partida'].values[0]
+	bd_partida_selecionada = bd_geral[bd_geral['Index_Partida']==id_partida_selecionada]
+	bd_partida_selecionada.reset_index(inplace = True)
+	bd_partida_selecionada
+	
+  # Declarando as variáveis da tabela
   # Definindo dicionário para stats da coluna nome_ato
-  stats_nome_ato = ['Passe', 'Finalização', 'Corte', 'Cartão Amarelo', 'Cartão Vermelho', 'Bloqueio de chute',
-                    'Desarme', 'Drible', 'Falta cometida', 'Falta sofrida', 'Perda de posse']
+	stats_nome_ato = ['Passe', 'Finalização', 'Corte', 'Cartão Amarelo', 'Cartão Vermelho', 'Bloqueio de chute','Desarme', 'Drible', 'Falta cometida', 'Falta sofrida', 'Perda de posse']
 
-  dicionario_nome_ato = {
-    stat: {Partida: sum((my_df.Nome_Ato == stat) & (my_df.Index_Partida == Partida)) for Partida in Partidas} for stat
-    in stats_nome_ato}
-
-  print(dicionario_nome_ato)
+	dicionario_nome_ato = {stat: sum(bd_partida_selecionada.Nome_Ato == stat) for stat in stats_nome_ato}
 
   # Definindo dicionário para stats da coluna finalizacao_outcome
-  stats_finalizacao_outcome = ['Finalização no gol', 'Finalização para fora', 'Finalização bloqueada']
+	stats_finalizacao_outcome = ['Finalização no gol', 'Finalização para fora', 'Finalização bloqueada']
 
-  dicionario_finalizacao_outcome = {
-    stat: {Partida: sum((my_df.Nome_Finalizacao_Outcome == stat) & (my_df.Index_Partida == Partida)) for Partida in
-           Partidas} for stat in stats_finalizacao_outcome}
-
-  print(dicionario_finalizacao_outcome)
+	dicionario_finalizacao_outcome = {stat: sum(bd_partida_selecionada.Nome_Finalizacao_Outcome == stat) for stat in stats_finalizacao_outcome}
 
   # Definindo dicionário para stats da coluna pass_outcome
-  stats_pass_outcome = ['Passe Certo', 'Passe Errado']
+	stats_pass_outcome = ['Passe Certo', 'Passe Errado']
 
-  dicionario_pass_outcome = {
-    stat: {Partida: sum((my_df.Nome_Pass_Outcome == stat) & (my_df.Index_Partida == Partida)) for Partida in Partidas}
-    for stat in stats_pass_outcome}
-
-  print(dicionario_pass_outcome)
+	dicionario_pass_outcome = {stat: sum(bd_partida_selecionada.Nome_Pass_Outcome == stat) for stat in stats_pass_outcome}
 
   # Definindo dicionário para stats da coluna nome_duelo
-  stats_nome_duelo = ['Duelo no Chão', 'Duelo Aéreo']
+	stats_nome_duelo = ['Duelo no Chão', 'Duelo Aéreo']
 
-  dicionario_nome_duelo = {
-    stat: {Partida: sum((my_df.Nome_Duelo == stat) & (my_df.Index_Partida == Partida)) for Partida in Partidas} for stat
-    in stats_nome_duelo}
-
-  print(dicionario_nome_duelo)
+	dicionario_nome_duelo = {stat: sum(bd_partida_selecionada.Nome_Duelo == stat) for stat in stats_nome_duelo}
 
   # Definindo dicionário para stats da coluna duelo_outcome
-  stats_duelo_outcome = ['Duelo no Chão Ganho', 'Duelo Aéreo Ganho', 'Duelo no chão perdido', 'Duelo aéreo perdido']
+	stats_duelo_outcome = ['Duelo no Chão Ganho', 'Duelo Aéreo Ganho', 'Duelo no chão perdido', 'Duelo aéreo perdido']
 
-  dicionario_duelo_outcome = {
-    stat: {Partida: sum((my_df.Nome_Duelo_Outcome == stat) & (my_df.Index_Partida == Partida)) for Partida in Partidas}
-    for stat in stats_duelo_outcome}
-
-  print(dicionario_duelo_outcome)
+	dicionario_duelo_outcome = {stat: sum(bd_partida_selecionada.Nome_Duelo_Outcome == stat) for stat in stats_duelo_outcome}
 
   # Definindo dicionário para stats da colune index_gol
-  stat_index_gol = 1
+	stat_index_gol = 1
 
-  dicionario_index_gol = {
-    'Gol': {Partida: sum((my_df.Index_Gol == stat_index_gol) & (my_df.Index_Partida == Partida)) for Partida in
-            Partidas}}
-
-  print(dicionario_index_gol)
+	dicionario_index_gol = {'Gol': sum(bd_partida_selecionada.Index_Gol == stat_index_gol)}
 
   # Definindo dicionário para stats da coluna index_assistencia
-  stat_index_assist = 1
+	stat_index_assist = 1
 
-  dicionario_index_assist = {
-    'Assistência': {Partida: sum((my_df.Index_Assist == stat_index_assist) & (my_df.Index_Partida == Partida)) for
-                    Partida in Partidas}}
-
-  print(dicionario_index_assist)
+	dicionario_index_assist = {'Assistência': sum(bd_partida_selecionada.Index_Assist == stat_index_assist)}
 
   # Definindo dicionário para stats da coluna index_toque
-  stat_index_toque = 1
+	stat_index_toque = 1
 
-  dicionario_index_toque = {
-    'Toque': {Partida: sum((my_df.Index_Toque == stat_index_toque) & (my_df.Index_Partida == Partida)) for Partida in
-              Partidas}}
-
-  print(dicionario_index_toque)
+	dicionario_index_toque = {'Toque': sum(bd_partida_selecionada.Index_Toque == stat_index_toque)}
 
   # Definindo dicionário para stats da coluna index_passe_longo
-  stat_index_passe_longo = 1
+	stat_index_passe_longo = 1
 
-  dicionario_index_passe_longo = {
-    'Passe Longo': {Partida: sum((my_df.Index_Passe_Longo == stat_index_passe_longo) & (my_df.Index_Partida == Partida))
-                    for Partida in Partidas}}
-
-  print(dicionario_index_passe_longo)
+	dicionario_index_passe_longo = {'Passe Longo': sum(bd_partida_selecionada.Index_Passe_Longo == stat_index_passe_longo)}
 
   # Definindo dicionário para % de passes certos
-  lista_passes = np.array(list(dicionario_nome_ato['Passe'].values()))
-  lista_passes_certos = np.array(list(dicionario_pass_outcome['Passe Certo'].values()))
+	lista_percentual_passe_certo = dicionario_pass_outcome['Passe Certo'] / dicionario_nome_ato['Passe']
+	lista_percentual_passe_certo = '{:.1%}'.format(lista_percentual_passe_certo)
 
-  print(lista_passes)
-  print(lista_passes_certos)
-
-  lista_percentual_passe_certo = lista_passes_certos / lista_passes
-
-  dicionario_percent_passes_certo = {
-    '% Passes certos': {Partida: lista_percentual_passe_certo[Partida - 1] for Partida in Partidas}}
-  print(dicionario_percent_passes_certo)
+	dicionario_percent_passes_certo = {'% Passes certos': lista_percentual_passe_certo}
 
   # Definindo dicionário para % de duelos aéreos ganhos
-  lista_duelos_aereos = np.array(list(dicionario_nome_duelo['Duelo Aéreo'].values()))
-  lista_duelos_aereos_vencidos = np.array(list(dicionario_duelo_outcome['Duelo Aéreo Ganho'].values()))
+	lista_percentual_duelos_aereos_vencidos = dicionario_duelo_outcome['Duelo Aéreo Ganho'] / dicionario_nome_duelo['Duelo Aéreo']
+	lista_percentual_duelos_aereos_vencidos = '{:.1%}'.format(lista_percentual_duelos_aereos_vencidos)
 
-  print(lista_duelos_aereos)
-  print(lista_duelos_aereos_vencidos)
-
-  lista_percentual_duelos_aereos_vencidos = lista_duelos_aereos_vencidos / lista_duelos_aereos
-
-  dicionario_percent_duelos_aereos_vencidos = {
-    '% Duelos aéreos vencidos': {Partida: lista_percentual_duelos_aereos_vencidos[Partida - 1] for Partida in Partidas}}
-  print(dicionario_percent_duelos_aereos_vencidos)
+	dicionario_percent_duelos_aereos_vencidos = {'% Duelos aéreos vencidos': lista_percentual_duelos_aereos_vencidos}
 
   # Definindo dicionário para % de duelos no chão ganhos
-  lista_duelos_no_chao = np.array(list(dicionario_nome_duelo['Duelo no Chão'].values()))
-  lista_duelos_no_chao_vencidos = np.array(list(dicionario_duelo_outcome['Duelo no Chão Ganho'].values()))
+	lista_percentual_duelos_no_chao_vencidos = dicionario_duelo_outcome['Duelo no Chão Ganho'] / dicionario_nome_duelo['Duelo no Chão']
+	lista_percentual_duelos_no_chao_vencidos = '{:.1%}'.format(lista_percentual_duelos_no_chao_vencidos)
 
-  print(lista_duelos_no_chao)
-  print(lista_duelos_no_chao_vencidos)
+	dicionario_percent_duelos_no_chao_vencidos = {'% Duelos no chão vencidos': lista_percentual_duelos_no_chao_vencidos}
 
-  lista_percentual_duelos_no_chao_vencidos = lista_duelos_no_chao_vencidos / lista_duelos_no_chao
+  # Definindo dicionário gols + assistências
+	gols_assistencias = dicionario_index_gol['Gol'] + dicionario_index_assist['Assistência']
 
-  dicionario_percent_duelos_no_chao_vencidos = {
-    '% Duelos no chão vencidos': {Partida: lista_percentual_duelos_no_chao_vencidos[Partida - 1] for Partida in
-                                  Partidas}}
-  print(dicionario_percent_duelos_no_chao_vencidos)
+	dicionario_gol_assist = {'Gols + Assistências': gols_assistencias}
+
+  # Definindo dicionário classificação média matchday
+	dicionario_clas_matchday = {'Classificação média Matchday': 7.9}
 
   # Juntando os diversos dicionários em um único para o gráfico de evolução
-  Dicionario_evolucao = {**dicionario_duelo_outcome, **dicionario_finalizacao_outcome, **dicionario_index_assist,
-                         **dicionario_index_gol, **dicionario_index_passe_longo, **dicionario_index_toque,
-                         **dicionario_nome_ato, **dicionario_nome_duelo, **dicionario_pass_outcome,
-                         **dicionario_percent_duelos_aereos_vencidos, **dicionario_percent_duelos_no_chao_vencidos,
-                         **dicionario_percent_passes_certo}
-  print(Dicionario_evolucao)
+	Dicionario_evolucao = {**dicionario_duelo_outcome, **dicionario_finalizacao_outcome, **dicionario_index_assist,
+			       **dicionario_index_gol, **dicionario_index_passe_longo, **dicionario_index_toque,
+			       **dicionario_nome_ato, **dicionario_nome_duelo, **dicionario_pass_outcome,
+			       **dicionario_percent_duelos_aereos_vencidos, **dicionario_percent_duelos_no_chao_vencidos,
+			       **dicionario_percent_passes_certo, **dicionario_gol_assist, **dicionario_clas_matchday}
 
-  # Criando dicionario com nome do time visitante em cada partida
-  dicionario_partidas_visitantes = {}
-  for id_partida in Partidas:
-    adversario = data.loc[data['Index_Partida'] == id_partida, 'Nome_Time_Visitante']
-    pd_adversario = pd.DataFrame(adversario)
-    data_partida = data.loc[data['Index_Partida'] == id_partida, 'Data']
-    pd_data_partida = pd.DataFrame(data_partida)
-    adversario = pd_adversario.Nome_Time_Visitante.unique()
-    adversario = adversario.tolist()[0]
-    data_partida = pd_data_partida.Data.unique()
-    data_partida = data_partida.tolist()[0]
-    dicionario_partidas_visitantes[id_partida] = adversario + ' - ' + data_partida
-  print(dicionario_partidas_visitantes)
+  # Plotando as informações da partida em uma tabela
 
-  # Criando dicionario evolucao com nome do time visitante
-  dicionario_partidas_visitantes = {}
-  for id_partida in Partidas:
-    adversario = data.loc[data['Index_Partida'] == id_partida, 'Nome_Time_Visitante']
-    pd_adversario = pd.DataFrame(adversario)
-    data_partida = data.loc[data['Index_Partida'] == id_partida, 'Data']
-    pd_data_partida = pd.DataFrame(data_partida)
-    adversario = pd_adversario.Nome_Time_Visitante.unique()
-    adversario = adversario.tolist()[0]
-    data_partida = pd_data_partida.Data.unique()
-    data_partida = data_partida.tolist()[0]
-    dicionario_partidas_visitantes[id_partida] = adversario + ' - ' + data_partida
-  print(dicionario_partidas_visitantes)
+  #Definindo lista de estatisticas em ordem
+	stats = ['Classificação média Matchday', 'Gols + Assistências', 'Gol', 'Assistência', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Toque', 'Passe Certo', '% Passes certos', 
+		 'Perda de posse', 'Duelo no Chão Ganho', '% Duelos no chão vencidos', 'Duelo Aéreo Ganho','% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta sofrida', 'Falta cometida', 
+		 'Cartão Amarelo', 'Cartão Vermelho']
 
-  # modificando o dicionario para nome de adversario
+  # Criando figura
 
-  stats = list(Dicionario_evolucao.keys())
-  #stats = ['Gol', 'Assistência', 'Toque', 'Passe Certo','% Passes certos', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Perdas de posse', 'Duelo no Chão', '% Duelos no chão vencidos', 'Duelo Aéreo', '% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta cometida', 'Falta sofrida', 'Cartão Amarelo', 'Cartão Vermelho']
+	fig, ax = plt.subplots(figsize=(8,24))
 
-  dic_partida_j = {}
-  dic_stat = {}
+  # Definindo número de linhas e colunas
 
-  for stat in stats:
-    for Partida in Partidas:
-      dic_partida_i = {dicionario_partidas_visitantes[Partida]: Dicionario_evolucao[stat][Partida]}
-      dic_partida_j = {**dic_partida_j, **dic_partida_i}
-    dic_stat_j = {stat: dic_partida_j}
-    dic_stat = {**dic_stat, **dic_stat_j}
+	cols = 3
+	rows = 24
 
-  # Criando tabela geral
+  # Criar coordenadas com base no número de linhas e colunas
 
-  lista_estatisticas = list(dic_stat.keys())
-  Scouts = list(dic_stat.values())
-  Partidas = list(dic_stat['Passe'].keys())
-  adversario = list(
-    dicionario_partidas_visitantes.values())  ## quando coloco essa variavel dentro do dataframe ele passa a nao entender os valores porque acho que estao em dicionarios diferentes
-  df_data = pd.DataFrame(Scouts, columns=Partidas, index=lista_estatisticas)
-  df_data = df_data.loc[(df_data.index != 'Duelo no Chão Ganho') & (df_data.index != 'Duelo Aéreo Ganho') & (df_data.index != 'Duelo no chão perdido') & (df_data.index != 'Duelo aéreo perdido') & (df_data.index != 'Passe Longo') & (df_data.index != 'Drible') & (df_data.index != 'Passe Certo') & (df_data.index != 'Passe Errado')]
-  sorting = {'estatística': ['Gol', 'Assistência', 'Toque', 'Passe', '% Passes certos', 'Finalização', 'Finalização no gol', 'Finalização para fora', 'Finalização bloqueada', 'Perda de posse', 'Duelo no Chão', '% Duelos no chão vencidos', 'Duelo Aéreo', '% Duelos aéreos vencidos', 'Desarme', 'Corte', 'Bloqueio de chute', 'Falta cometida', 'Falta sofrida', 'Cartão Amarelo', 'Cartão Vermelho']}
-  df_mapping = pd.DataFrame(sorting)
-  sort_mapping  = df_mapping.reset_index().set_index('estatística')
-  df_data['ordem'] = df_data.index.map(sort_mapping['index'])
-  df_data = df_data.sort_values('ordem')
-  df_data = df_data.drop(columns = ['ordem'])
-  st.dataframe(df_data)
+  # Adicionando bordas
 
+	ax.set_ylim(-1, rows + 1)
+	ax.set_xlim(0.25, cols-0.5)
+
+  # setando a linha inicial
+
+	linha = 24
+
+  # loop para preencher a tabela chamando as estatísticas
+
+	for stat in stats:
+		stat_valor = Dicionario_evolucao[stat]
+		ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
+		ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
+		linha = linha - 1
+
+  # colocando cabeçalho
+	ax.text(0.25, 24.75, 'Stat', weight='bold', ha='left')
+	ax.text(2.25, 24.75, 'Valor', weight='bold', ha='right')
+	ax.plot([0.25, cols-0.62], [24.5, 24.5], lw='.5', c='black')
+
+	ax.plot([0.25, cols-0.62], [23.5, 23.5], lw='.2', c='gray')
+	ax.plot([0.25, cols-0.62], [16.5, 16.5], lw='.2', c='gray')
+	ax.plot([0.25, cols-0.62], [12.5, 12.5], lw='.2', c='gray')
+	ax.plot([0.25, cols-0.62], [5.5, 5.5], lw='.2', c='gray')
+
+  # tirando eixos
+	ax.axis('off')
+
+	fig
+	
 with tab2:
   
   tab4, tab5 = st.tabs(['Event Map','Heat Map'])
