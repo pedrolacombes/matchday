@@ -49,7 +49,6 @@ with tab1:
 	sheet_name = 'Partidas'
 	url = 'https://docs.google.com/spreadsheets/d/'+sheet_id+'/gviz/tq?tqx=out:csv&sheet='+sheet_name
 	bd_partidas = pd.read_csv(url)
-	bd_partidas
 
   # Definindo lista de partidas que podem ser selecionadas
 	lista_partidas_selecionaveis = bd_partidas.Nome_Completo_Partida.unique()
@@ -62,7 +61,6 @@ with tab1:
 	id_partida_selecionada = bd_partidas.loc[bd_partidas['Nome_Completo_Partida'] == partida_selecionada, 'Index_Partida'].values[0]
 	bd_partida_selecionada = bd_geral[bd_geral['Index_Partida']==id_partida_selecionada]
 	bd_partida_selecionada.reset_index(inplace = True)
-	bd_partida_selecionada
 	
   # Declarando as variáveis da tabela
   # Definindo dicionário para stats da coluna nome_ato
