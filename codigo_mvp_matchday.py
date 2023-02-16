@@ -94,6 +94,8 @@ with tab1:
 		ax.plot([20,26.8], [20.5,15.54], color='grey',alpha=0.3)
 		ax.plot([20,31], [20.5,22], color='grey',alpha=0.3)
 		
+		ax.axis('off')
+		
 		fig
 
 	# Codigo para a pagina de estatistica por jogo
