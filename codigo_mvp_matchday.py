@@ -43,10 +43,9 @@ with tab1:
 	
 	with tab9:
 		st.write('Em construção')
-	
-	with tab10:
-		st.write('Em construção')
 
+	# Codigo para a pagina de estatistica por jogo
+	
 	with tab11:
 
 	  # Alterando dataframe para pegar apenas linhas com informação
@@ -182,6 +181,60 @@ with tab1:
 		for stat in stats:
 			stat_valor = Dicionario_evolucao[stat]
 			ax.text(x=0.25, y=linha, s=stat, va='center', ha='left')
+			ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
+			linha = linha - 1
+
+	  # colocando cabeçalho
+		ax.text(0.25, 24.75, 'Stat', weight='bold', ha='left')
+		ax.text(2.25, 24.75, 'Valor', weight='bold', ha='right')
+		ax.plot([0.25, cols-0.62], [24.5, 24.5], lw='.5', c='black')
+
+		ax.plot([0.25, cols-0.62], [23.5, 23.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [16.5, 16.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [12.5, 12.5], lw='.2', c='gray')
+		ax.plot([0.25, cols-0.62], [5.5, 5.5], lw='.2', c='gray')
+
+	  # tirando eixos
+		ax.axis('off')
+
+		fig
+	
+	# Criando aba por campeonato
+	
+	with tab10:
+		
+		# Criando selectbox para escolher campeonato
+		
+		campeonato_escolhido = st.selectbox('Selecione um campeonato', 'FGV Society')
+		
+		# Criando figura
+
+		fig, ax = plt.subplots(figsize=(8,24))
+
+	  # Definindo número de linhas e colunas
+
+		cols = 3
+		rows = 24
+
+	  # Criar coordenadas com base no número de linhas e colunas
+
+	  # Adicionando bordas
+
+		ax.set_ylim(-1, rows + 1)
+		ax.set_xlim(0.25, cols-0.5)
+
+	  # setando a linha inicial
+
+		linha = 24
+
+	  # loop para preencher a tabela chamando as estatísticas
+
+		numero_jogos = len(lista_partidas_selecionaveis)
+		
+		for stat in stats:
+			stat_valor = Dicionario_evolucao[stat]
+			stat_valor = stat_valor / numero_jogos
+			ax.text(x=0.25, y=linha, s=stat+' por partida', va='center', ha='left')
 			ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
 			linha = linha - 1
 
