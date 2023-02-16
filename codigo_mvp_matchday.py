@@ -203,6 +203,85 @@ with tab1:
 	
 	with tab10:
 		
+		# Declarando as variáveis da tabela
+		# Definindo dicionário para stats da coluna nome_ato
+		stats_nome_ato = ['Passe', 'Finalização', 'Corte', 'Cartão Amarelo', 'Cartão Vermelho', 'Bloqueio de chute','Desarme', 'Drible', 'Falta cometida', 'Falta sofrida', 'Perda de posse']
+
+		dicionario_nome_ato = {stat: sum(my_df.Nome_Ato == stat) for stat in stats_nome_ato}
+
+		# Definindo dicionário para stats da coluna finalizacao_outcome
+		stats_finalizacao_outcome = ['Finalização no gol', 'Finalização para fora', 'Finalização bloqueada']
+
+		dicionario_finalizacao_outcome = {stat: sum(my_df.Nome_Finalizacao_Outcome == stat) for stat in stats_finalizacao_outcome}
+
+		# Definindo dicionário para stats da coluna pass_outcome
+		stats_pass_outcome = ['Passe Certo', 'Passe Errado']
+
+		dicionario_pass_outcome = {stat: sum(my_df.Nome_Pass_Outcome == stat) for stat in stats_pass_outcome}
+
+		# Definindo dicionário para stats da coluna nome_duelo
+		stats_nome_duelo = ['Duelo no Chão', 'Duelo Aéreo']
+
+		dicionario_nome_duelo = {stat: sum(my_df.Nome_Duelo == stat) for stat in stats_nome_duelo}
+
+		# Definindo dicionário para stats da coluna duelo_outcome
+		stats_duelo_outcome = ['Duelo no Chão Ganho', 'Duelo Aéreo Ganho', 'Duelo no chão perdido', 'Duelo aéreo perdido']
+
+		dicionario_duelo_outcome = {stat: sum(my_df.Nome_Duelo_Outcome == stat) for stat in stats_duelo_outcome}
+
+		# Definindo dicionário para stats da colune index_gol
+		stat_index_gol = 1
+
+		dicionario_index_gol = {'Gol': sum(my_df.Index_Gol == stat_index_gol)}
+
+		# Definindo dicionário para stats da coluna index_assistencia
+		stat_index_assist = 1
+
+		dicionario_index_assist = {'Assistência': sum(my_df.Index_Assist == stat_index_assist)}
+
+		# Definindo dicionário para stats da coluna index_toque
+		stat_index_toque = 1
+
+		dicionario_index_toque = {'Toque': sum(my_df.Index_Toque == stat_index_toque)}
+
+		# Definindo dicionário para stats da coluna index_passe_longo
+		stat_index_passe_longo = 1
+
+		dicionario_index_passe_longo = {'Passe Longo': sum(my_df.Index_Passe_Longo == stat_index_passe_longo)}
+
+		# Definindo dicionário para % de passes certos
+		lista_percentual_passe_certo = dicionario_pass_outcome['Passe Certo'] / dicionario_nome_ato['Passe']
+		lista_percentual_passe_certo = '{:.1%}'.format(lista_percentual_passe_certo)
+
+		dicionario_percent_passes_certo = {'% Passes certos': lista_percentual_passe_certo}
+
+		# Definindo dicionário para % de duelos aéreos ganhos
+		lista_percentual_duelos_aereos_vencidos = dicionario_duelo_outcome['Duelo Aéreo Ganho'] / dicionario_nome_duelo['Duelo Aéreo']
+		lista_percentual_duelos_aereos_vencidos = '{:.1%}'.format(lista_percentual_duelos_aereos_vencidos)
+
+		dicionario_percent_duelos_aereos_vencidos = {'% Duelos aéreos vencidos': lista_percentual_duelos_aereos_vencidos}
+
+		# Definindo dicionário para % de duelos no chão ganhos
+		lista_percentual_duelos_no_chao_vencidos = dicionario_duelo_outcome['Duelo no Chão Ganho'] / dicionario_nome_duelo['Duelo no Chão']
+		lista_percentual_duelos_no_chao_vencidos = '{:.1%}'.format(lista_percentual_duelos_no_chao_vencidos)
+
+		dicionario_percent_duelos_no_chao_vencidos = {'% Duelos no chão vencidos': lista_percentual_duelos_no_chao_vencidos}
+
+		# Definindo dicionário gols + assistências
+		gols_assistencias = dicionario_index_gol['Gol'] + dicionario_index_assist['Assistência']
+
+		dicionario_gol_assist = {'Gols + Assistências': gols_assistencias}
+
+		# Definindo dicionário classificação média matchday
+		dicionario_clas_matchday = {'Classificação média Matchday': 7.9}
+
+		# Juntando os diversos dicionários em um único para o gráfico de evolução
+		Dicionario_evolucao = {**dicionario_duelo_outcome, **dicionario_finalizacao_outcome, **dicionario_index_assist,
+				       **dicionario_index_gol, **dicionario_index_passe_longo, **dicionario_index_toque,
+				       **dicionario_nome_ato, **dicionario_nome_duelo, **dicionario_pass_outcome,
+				       **dicionario_percent_duelos_aereos_vencidos, **dicionario_percent_duelos_no_chao_vencidos,
+				       **dicionario_percent_passes_certo, **dicionario_gol_assist, **dicionario_clas_matchday}
+		
 		# Criando selectbox para escolher campeonato
 		
 		campeonato_escolhido = st.selectbox('Selecione um campeonato', ['FGV Society'])
@@ -233,7 +312,7 @@ with tab1:
 		
 		for stat in stats:
 			stat_valor = Dicionario_evolucao[stat]
-			if type(stat_valor) != str:
+			if type(stat_valor) != str and stat != 'Classificação média Matchday':
 				stat_valor = stat_valor / numero_jogos
 			ax.text(x=0.25, y=linha, s=stat+' por partida', va='center', ha='left')
 			ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
