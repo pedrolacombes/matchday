@@ -42,7 +42,59 @@ with tab1:
 	tab9, tab10, tab11 = st.tabs(['Resumo', 'Stats Overview', 'Partidas'])
 	
 	with tab9:
-		st.write('Em construção')
+		# Criando figura
+		fig, ax = plt.subplots(figsize=(10,20))
+
+		# Definindo número de linhas e colunas
+
+		cols = 40
+		rows = 40
+
+		# Criar coordenadas com base no número de linhas e colunas
+
+		# Adicionando bordas
+
+		ax.set_ylim(0, rows)
+		ax.set_xlim(0, cols)
+
+		# Traçando linhas divisórias
+		ax.plot([1, 39], [36, 36], lw='.2', c='gray')
+		ax.plot([1, 39], [28, 28], lw='.2', c='gray')
+		ax.plot([1, 39], [14, 14], lw='.2', c='gray')
+
+
+		# colocando o time em que joga
+		ax.text(5,38, 'Canela de Pedreiro', weight='bold', ha='left', va='center', fontsize = 28)
+
+		# colocando dados gerais
+		ax.text(7.33, 34, 'Brasil', ha='center', va='center', fontsize = 16)
+		ax.text(20, 34, '30 anos', ha='center', va='center', fontsize = 16)
+		ax.text(32.66, 34, '177 cm', ha='center', va='center', fontsize = 16)
+		ax.text(7.33, 31, 'Destro', ha='center', va='center', fontsize = 16)
+		ax.text(20, 31, 'MEI', ha='center', va='center', fontsize = 16)
+		ax.text(32.66, 31, '5', ha='center', va='center', fontsize = 16)
+		ax.text(7.33, 33, 'Nacionalidade', ha='center', va='center', fontsize = 14, color='grey')
+		ax.text(20, 33, 'Idade', ha='center', va='center', fontsize = 14, color='grey')
+		ax.text(32.66, 33, 'Altura', ha='center', va='center', fontsize = 14, color = 'grey')
+		ax.text(7.33, 30, 'Pé de preferência', ha='center', va='center', fontsize = 14, color='grey')
+		ax.text(20, 30, 'Posição', ha='center', va='center', fontsize = 14,color='grey')
+		ax.text(32.66, 30, '# Camisa', ha='center', va='center', fontsize = 14,color='grey')
+
+		# plotando o pentagono de skills
+		coord = [[20, 26], [9, 22],[13.2,15.54],[26.8,15.54],[31,22]]
+		coord.append(coord[0])
+		xs, ys = zip(*coord)
+
+		ax.plot(xs,ys, color='grey', alpha=0.3)
+		ax.fill(xs,ys, color='grey', alpha=0.1)
+
+		ax.plot([20,20], [20.5,26], color='grey', alpha=0.3)
+		ax.plot([20,9], [20.5,22], color='grey',alpha=0.3)
+		ax.plot([20,13.2], [20.5,15.54], color='grey',alpha=0.3)
+		ax.plot([20,26.8], [20.5,15.54], color='grey',alpha=0.3)
+		ax.plot([20,31], [20.5,22], color='grey',alpha=0.3)
+		
+		fig
 
 	# Codigo para a pagina de estatistica por jogo
 	
