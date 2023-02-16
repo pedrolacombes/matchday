@@ -205,7 +205,7 @@ with tab1:
 		
 		# Criando selectbox para escolher campeonato
 		
-		campeonato_escolhido = st.selectbox('Selecione um campeonato', 'FGV Society')
+		campeonato_escolhido = st.selectbox('Selecione um campeonato', ['FGV Society'])
 		
 		# Criando figura
 
@@ -232,7 +232,7 @@ with tab1:
 		numero_jogos = len(lista_partidas_selecionaveis)
 		
 		for stat in stats:
-			stat_valor = Dicionario_evolucao[stat]
+			stat_valor = float(Dicionario_evolucao[stat])
 			stat_valor = stat_valor / 4
 			ax.text(x=0.25, y=linha, s=stat+' por partida', va='center', ha='left')
 			ax.text(x=2.25, y=linha, s=stat_valor, ha='right')
