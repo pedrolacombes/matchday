@@ -651,7 +651,7 @@ with tab2:
         ax.add_patch(sentido)
 
   #Preenchendo de Verde
-        ax.fill_between([0,45],[25,25],color="Green")
+        ax.fill_between([0,45],[25,25],color="Green", alpha=0.55)
 
   # Tidy Axes
         ax.axis('off')
