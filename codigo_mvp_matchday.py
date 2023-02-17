@@ -33,7 +33,7 @@ my_df = my_df[my_df['Index_Evento'] != 'Sem valor']
 
 # declarando as 3 colunas do aplicativo
 
-tab1, tab2, tab3, tab6= st.tabs(['Tabela Geral','Mapas','Videos', 'Ranking'])
+tab1, tab2, tab3, tab6= st.tabs(['Meu Perfil','Meus Mapas','Meus Videos', 'Ranking'])
 
 # montando pagina do tabelao
 
