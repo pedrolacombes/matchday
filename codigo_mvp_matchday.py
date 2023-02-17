@@ -661,7 +661,7 @@ with tab2:
 
         toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
         toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
-        sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=200,
+        sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=0.55, n_levels=200,
                   cmap=customcmap)
 
         plt.ylim(0, 25)
