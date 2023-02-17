@@ -657,7 +657,7 @@ with tab2:
         ax.axis('off')
   
    # mapa de calor de toques
-        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['green', 'yellow'])
+        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['green', 'yellow','red'])
 
         toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
         toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
