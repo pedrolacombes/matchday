@@ -64,8 +64,8 @@ with tab1:
 
 
 		# colocando o time em que joga
-		ax.text(3,38, 'Samir Hauache', weight='bold', ha='left', va='center', fontsize = 28)
-		ax.text(3,37, 'Time: Canela de Pedreiro', ha='left', va='center', fontsize = 18, color='grey')
+		ax.text(1,38, 'Samir Hauache', weight='bold', ha='left', va='center', fontsize = 28)
+		ax.text(1,37, 'Time: Canela de Pedreiro', ha='left', va='center', fontsize = 18, color='grey')
 		
 
 		# colocando dados gerais
@@ -141,38 +141,45 @@ with tab1:
 		# Desenhando grafico classificação
 		ax.text(20, 13, s='Média mensal rating Matchday (últimos 12 meses)', color = 'grey', ha='center', fontsize=16)
 
-		coord = [[0, 12], [40, 12],[40,2],[0,2]]
+		coord = [[0, 12], [40, 12],[40,0],[0,0]]
 		coord.append(coord[0])
 		xs, ys = zip(*coord)
 
 		ax.plot(xs,ys, color='grey', alpha=0.0)
 		ax.fill(xs,ys, color='grey', alpha=0.1)
 
-		ax.bar(3.25,5.7,width=2.8,bottom=3,align='center', color = 'red', alpha = 0.9)
-		ax.bar(6.25,6.3,width=2.8,bottom=3,align='center', color = 'orange', alpha = 0.9)
-		ax.bar(9.25,6.8,width=2.8,bottom=3,align='center', color = 'orange', alpha = 0.9)
-		ax.bar(12.25,8.2,width=2.8,bottom=3,align='center', color = 'green', alpha = 0.7)
-		ax.bar(15.25,7.4,width=2.8,bottom=3,align='center', color = 'green', alpha = 0.4)
-		ax.bar(18.25,7.2,width=2.8,bottom=3,align='center', color = 'green', alpha = 0.4)
-		ax.bar(21.25,6.5,width=2.8,bottom=3,align='center', color = 'orange', alpha = 0.9)
-		ax.bar(24.25,8.4,width=2.8,bottom=3,align='center', color = 'green', alpha = 0.7)
-		ax.bar(27.25,7.7,width=2.8,bottom=3,align='center', color = 'green', alpha = 0.4)
-		ax.bar(30.25,7.5,width=2.8,bottom=3,align='center', color = 'green', alpha = 0.4)
-		ax.bar(33.25,5.9,width=2.8,bottom=3,align='center', color = 'red', alpha = 0.9)
-		ax.bar(36.25,7.7,width=2.8,bottom=3,align='center', color = 'green', alpha = 0.4)
+		ax.bar(3.25,5.7,width=2.8,bottom=1,align='center', color = 'red', alpha = 0.9)
+		ax.bar(6.25,6.3,width=2.8,bottom=1,align='center', color = 'orange', alpha = 0.9)
+		ax.bar(9.25,6.8,width=2.8,bottom=1,align='center', color = 'orange', alpha = 0.9)
+		ax.bar(12.25,8.2,width=2.8,bottom=1,align='center', color = 'green', alpha = 0.7)
+		ax.bar(15.25,7.4,width=2.8,bottom=1,align='center', color = 'green', alpha = 0.4)
+		ax.bar(18.25,7.2,width=2.8,bottom=1,align='center', color = 'green', alpha = 0.4)
+		ax.bar(21.25,6.5,width=2.8,bottom=1,align='center', color = 'orange', alpha = 0.9)
+		ax.bar(24.25,8.4,width=2.8,bottom=1,align='center', color = 'green', alpha = 0.7)
+		ax.bar(27.25,7.7,width=2.8,bottom=1,align='center', color = 'green', alpha = 0.4)
+		ax.bar(30.25,7.5,width=2.8,bottom=1,align='center', color = 'green', alpha = 0.4)
+		ax.bar(33.25,5.9,width=2.8,bottom=1,align='center', color = 'red', alpha = 0.9)
+		ax.bar(36.25,7.7,width=2.8,bottom=1,align='center', color = 'green', alpha = 0.4)
 
-		ax.text(3.25,2.35,s='5.7', color='red', fontsize = 12, ha='center', alpha=0.9)
-		ax.text(6.25,2.35,s='6.3', color='orange', fontsize = 12, ha='center', alpha=0.9)
-		ax.text(9.25,2.35,s='6.8', color='orange', fontsize = 12, ha='center', alpha=0.9)
-		ax.text(12.25,2.35,s='8.2', color='green', fontsize = 12, ha='center', alpha=0.7)
-		ax.text(15.25,2.35,s='7.4', color='green', fontsize = 12, ha='center', alpha=0.4)
-		ax.text(18.25,2.35,s='7.2', color='green', fontsize = 12, ha='center', alpha=0.4)
-		ax.text(21.25,2.35,s='6.5', color='orange', fontsize = 12, ha='center', alpha=0.9)
-		ax.text(24.25,2.35,s='8.4', color='green', fontsize = 12, ha='center', alpha=0.7)
-		ax.text(27.25,2.35,s='7.7', color='green', fontsize = 12, ha='center', alpha=0.4)
-		ax.text(30.25,2.35,s='7.5', color='green', fontsize = 12, ha='center', alpha=0.4)
-		ax.text(33.25,2.35,s='5.9', color='red', fontsize = 12, ha='center', alpha=0.9)
-		ax.text(36.25,2.35,s='7.7', color='green', fontsize = 12, ha='center', alpha=0.4)
+		ax.text(3.25,0.35,s='5.7', color='red', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(6.25,0.35,s='6.3', color='orange', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(9.25,0.35,s='6.8', color='orange', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(12.25,0.35,s='8.2', color='green', fontsize = 12, ha='center', alpha=0.7)
+		ax.text(15.25,0.35,s='7.4', color='green', fontsize = 12, ha='center', alpha=0.4)
+		ax.text(18.25,0.35,s='7.2', color='green', fontsize = 12, ha='center', alpha=0.4)
+		ax.text(21.25,0.35,s='6.5', color='orange', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(24.25,0.35,s='8.4', color='green', fontsize = 12, ha='center', alpha=0.7)
+		ax.text(27.25,0.35,s='7.7', color='green', fontsize = 12, ha='center', alpha=0.4)
+		ax.text(30.25,0.35,s='7.5', color='green', fontsize = 12, ha='center', alpha=0.4)
+		ax.text(33.25,0.35,s='5.9', color='red', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(36.25,0.35,s='7.7', color='green', fontsize = 12, ha='center', alpha=0.4)
+
+		ax.text(3.25,11.5,s='Jan', color='grey', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(9.25,11.5,s='Mar', color='grey', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(15.25,11.5,s='Mai', color='grey', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(18.25,11.5,s='Jul', color='grey', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(21.25,11.5,s='Sep', color='grey', fontsize = 12, ha='center', alpha=0.9)
+		ax.text(24.25,11.5,s='Nov', color='grey', fontsize = 12, ha='center', alpha=0.9)
 		
 		ax.axis('off')
 		
