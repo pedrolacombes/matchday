@@ -522,6 +522,9 @@ with tab2:
   # Draw Circles
     ax.add_patch(centreSpot)
 
+  #Preenchendo de Verde
+    plt.fill_between([0,45],[25,25],color="Green")
+
   # Tidy Axes
     ax.axis('off')
 
@@ -646,9 +649,6 @@ with tab2:
   # Draw sentido do campo
         sentido = plt.arrow(18, 12.5, 8, 0, color="black", head_width = 0.4)
         ax.add_patch(sentido)
-
-  #Preenchendo de Verde
-	plt.fill_between([0,45],[25,25],color="Green")
 
   # Tidy Axes
         ax.axis('off')
