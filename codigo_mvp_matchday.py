@@ -140,15 +140,6 @@ with tab1:
 		
 		fig
 		
-		col1, col2, col3 = st.columns(3)
-		
-		with col1:
-			st.write('ola')
-		with col2: 
-			st.write('como vai')
-		with col3:
-			st.write('vc')
-
 	# Codigo para a pagina de estatistica por jogo
 	
 	with tab11:
