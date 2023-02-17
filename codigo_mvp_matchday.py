@@ -65,7 +65,7 @@ with tab1:
 
 		# colocando o time em que joga
 		ax.text(3,38, 'Samir Hauache', weight='bold', ha='left', va='center', fontsize = 28)
-		ax.text(3,36.5, 'Time: Canela de Pedreiro', ha='left', va='center', fontsize = 18, color='grey')
+		ax.text(3,37, 'Time: Canela de Pedreiro', ha='left', va='center', fontsize = 18, color='grey')
 		
 
 		# colocando dados gerais
