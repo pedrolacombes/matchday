@@ -523,7 +523,7 @@ with tab2:
     ax.add_patch(centreSpot)
 
   #Preenchendo de Verde
-    plt.fill_between([0,45],[25,25],color="Green", alpha=0.55)
+    plt.fill_between([0,45],[25,25],color="Green", alpha=1)
 
   # Tidy Axes
     ax.axis('off')
