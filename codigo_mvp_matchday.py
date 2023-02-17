@@ -620,34 +620,34 @@ with tab2:
         ax = fig.add_subplot(1, 1, 1)
 
   # Pitch Outline & Centre Line
-        ax.plot([0, 0], [0, 25], color="black")
-        ax.plot([0, 45], [25, 25], color="black")
-        ax.plot([45, 45], [25, 0], color="black")
-        ax.plot([45, 0], [0, 0], color="black")
-        ax.plot([22.5, 22.5], [0, 25], color="black")
+        ax.plot([0, 0], [0, 25], color="white")
+        ax.plot([0, 45], [25, 25], color="white")
+        ax.plot([45, 45], [25, 0], color="white")
+        ax.plot([45, 0], [0, 0], color="white")
+        ax.plot([22.5, 22.5], [0, 25], color="white")
 
   # Pitch shoot-out lines
-        ax.plot([17.5, 17.5], [15, 10], color="black")
-        ax.plot([27.5, 27.5], [15, 10], color="black")
+        ax.plot([17.5, 17.5], [15, 10], color="white")
+        ax.plot([27.5, 27.5], [15, 10], color="white")
 
   # Left Penalty Area
-        ax.plot([8, 8], [20, 5], color="black")
-        ax.plot([0, 8], [20, 20], color="black")
-        ax.plot([8, 0], [5, 5], color="black")
+        ax.plot([8, 8], [20, 5], color="white")
+        ax.plot([0, 8], [20, 20], color="white")
+        ax.plot([8, 0], [5, 5], color="white")
 
   # Right Penalty Area
-        ax.plot([45, 37], [20, 20], color="black")
-        ax.plot([37, 37], [20, 5], color="black")
-        ax.plot([37, 45], [5, 5], color="black")
+        ax.plot([45, 37], [20, 20], color="white")
+        ax.plot([37, 37], [20, 5], color="white")
+        ax.plot([37, 45], [5, 5], color="white")
 
   # Prepare Circles
-        centreSpot = plt.Circle((22.5,12.5), 0.1, color="black")
+        centreSpot = plt.Circle((22.5,12.5), 0.1, color="white")
 
   # Draw Circles
         ax.add_patch(centreSpot)
     
   # Draw sentido do campo
-        sentido = plt.arrow(18, 12.5, 8, 0, color="black", head_width = 0.4)
+        sentido = plt.arrow(18, 12.5, 8, 0, color="white", head_width = 0.4)
         ax.add_patch(sentido)
 
   #Preenchendo de Verde
