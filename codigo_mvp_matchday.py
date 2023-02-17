@@ -915,13 +915,13 @@ with tab6:
 			stat_jogador2 = data_jogador2.loc[data['Nome_Estatistica_Ranking'] == stat_comp, 'Media_Estatistica_Ranking'].values[0]
 			if stat_jogador1 > stat_jogador2:
 				color1 = 'green'
-				alpha1 = 0.2
+				alpha1 = 0.1
 			else:
 				color1 = 'white'
 				alpha1 = 0.0
 			if stat_jogador2 > stat_jogador1:
 				color2 = 'blue'
-				alpha2 = 0.2
+				alpha2 = 0.1
 			else:
 				color2 = 'white'
 				alpha2 = 0.0
