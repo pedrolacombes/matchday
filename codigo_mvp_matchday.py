@@ -661,7 +661,6 @@ with tab2:
 
         toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
         toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
-	
 	heatmap, xedges, yedges = np.histogram2d(toques_xstart, toques_ystart, bins = (25,45))
 	extent = [xedges[0], xedges[-1], yedges[0], yedges[-1]]
 
