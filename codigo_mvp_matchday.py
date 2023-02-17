@@ -94,6 +94,48 @@ with tab1:
 		ax.plot([20,26.8], [20.5,15.54], color='grey',alpha=0.3)
 		ax.plot([20,31], [20.5,22], color='grey',alpha=0.3)
 		
+		att = 57
+		cre = 63
+		tec = 67
+		tac = 65
+		deff = 62
+		x_cent = 20
+		y_cent = 20.5
+		x_att_full = 20
+		y_att_full = 26
+		x_cre_full = 9
+		y_cre_full = 22
+		x_tec_full = 31
+		y_tec_full = 22
+		x_tac_full = 26.8
+		y_tac_full = 15.54
+		x_deff_full = 13.2
+		y_deff_full = 15.54
+		x_att = x_cent + (x_att_full - x_cent) * (att / 100)
+		y_att = y_cent + (y_att_full - y_cent) * (att / 100)
+		x_cre = x_cent + (x_cre_full - x_cent) * (cre / 100)
+		y_cre = y_cent + (y_cre_full - y_cent) * (cre / 100)
+		x_tec = x_cent + (x_tec_full - x_cent) * (tec / 100)
+		y_tec = y_cent + (y_tec_full - y_cent) * (tec / 100)
+		x_tac = x_cent + (x_tac_full - x_cent) * (tac / 100)
+		y_tac = y_cent + (y_tac_full - y_cent) * (tac / 100)
+		x_deff = x_cent + (x_deff_full - x_cent) * (deff / 100)
+		y_deff = y_cent + (y_deff_full - y_cent) * (deff / 100)
+
+		coord_int = [[x_att,y_att],[x_cre,y_cre],[x_deff, y_deff],[x_tac,y_tac],[x_tec,y_tec]]
+		coord_int.append(coord_int[0])
+		xsi,ysi = zip(*coord_int)
+
+		ax.plot(xsi,ysi, color='green', alpha=0.3)
+		ax.fill(xsi,ysi, color='green', alpha=0.3)
+
+		ax.text(1.25,27,s='Visão geral atributos', color='grey', fontsize = 12, ha='left')
+		ax.text(20,26.5,s='ATT '+str(att), color='white', fontsize = 12, ha='center', bbox = dict(facecolor='green', alpha=0.45))
+		ax.text(8.5,22,s='CRE '+str(cre), color='white', fontsize = 12, ha='right', bbox = dict(facecolor='green', alpha=0.45))
+		ax.text(31.5,22,s='TEC '+str(cre), color='white', fontsize = 12, ha='left', bbox = dict(facecolor='green', alpha=0.45))
+		ax.text(27.3,14.8,s='TAC '+str(cre), color='white', fontsize = 12, ha='left', bbox = dict(facecolor='green', alpha=0.45))
+		ax.text(12.7,14.8,s='DEF '+str(deff), color='white', fontsize = 12, ha='right', bbox = dict(facecolor='green', alpha=0.45))
+		
 		ax.axis('off')
 		
 		fig
