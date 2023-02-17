@@ -657,13 +657,16 @@ with tab2:
         ax.axis('off')
   
    # mapa de calor de toques
-        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['green','yellow','red'])
+        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['yellow','red'])
 
         toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
         toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
-        sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, thresh=0.1, alpha=1, n_levels=1000,
-                  cmap=customcmap)
+	
+	heatmap, xedges, yedges = np.histogram2d(toques_xstart, toques_ystart, bins = (25,45))
+	extent = [xedges[0], xedges[-1], yedges[0], yedges[-1]]
 
+	ax.plt(heatmap, extent = extent, origin = 'lower')
+	
         plt.ylim(0, 25)
         plt.xlim(0, 45)
 
