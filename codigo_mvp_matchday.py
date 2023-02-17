@@ -920,11 +920,11 @@ with tab6:
 				color1 = 'white'
 				alpha1 = 0.0
 			if stat_jogador2 > stat_jogador1:
-				color1 = 'blue'
-				alpha1 = 0.2
+				color2 = 'blue'
+				alpha2 = 0.2
 			else:
-				color1 = 'white'
-				alpha1 = 0.0
+				color2 = 'white'
+				alpha2 = 0.0
 			ax.text(x=0.5, y=linha, s=stat_jogador1, va='center', ha='right', bbox = dict(facecolor=color1, alpha=alpha1))
 			ax.text(x=2.25, y=linha, s=stat_jogador2, va='center', ha='right', bbox = dict(facecolor=color2, alpha=alpha2))
 			ax.text(x=1.325, y=linha, s=stat_comp+' por jogo', va='center', ha='center')
