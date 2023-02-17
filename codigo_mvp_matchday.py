@@ -651,13 +651,13 @@ with tab2:
         ax.add_patch(sentido)
 
   #Preenchendo de Verde
-        ax.fill_between([0,45],[25,25],color="Green", alpha=0.55)
+        ax.fill_between([0,45],[25,25],color="Green", alpha=1)
 
   # Tidy Axes
         ax.axis('off')
   
    # mapa de calor de toques
-        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['yellow','red'])
+        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['green','yellow','red'])
 
         toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
         toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
