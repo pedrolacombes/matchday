@@ -660,10 +660,10 @@ with tab2:
         customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['yellow','red'])
 
         if 1==1:
-		toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
-        	toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
+	  toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
+          toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
 	
-		sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,cmap=customcmap)
+	  sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,cmap=customcmap)
 	
         plt.ylim(0, 25)
         plt.xlim(0, 45)
