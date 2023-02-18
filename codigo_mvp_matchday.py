@@ -612,60 +612,56 @@ with tab2:
         st.write(f"Desse total, {contagem_passe_certo / (contagem_passe_certo + contagem_passe_errado):.0%} foram passes certos")
     
     # aba de heatmap
-    
-    with tab5:
+
+
+  with tab5:
         
-        # Create figure
-        fig = plt.figure()
-        ax = fig.add_subplot(1, 1, 1)
+       # Create figure
+	fig = plt.figure()
+	ax = fig.add_subplot(1, 1, 1)
 
-  # Pitch Outline & Centre Line
-        ax.plot([0, 0], [0, 25], color="white")
-        ax.plot([0, 45], [25, 25], color="white")
-        ax.plot([45, 45], [25, 0], color="white")
-        ax.plot([45, 0], [0, 0], color="white")
-        ax.plot([22.5, 22.5], [0, 25], color="white")
+	# Pitch Outline & Centre Line
+	ax.plot([0, 0], [0, 25], color="white")
+	ax.plot([0, 45], [25, 25], color="white")
+	ax.plot([45, 45], [25, 0], color="white")
+	ax.plot([45, 0], [0, 0], color="white")
+	ax.plot([22.5, 22.5], [0, 25], color="white")
 
-  # Pitch shoot-out lines
-        ax.plot([17.5, 17.5], [15, 10], color="white")
-        ax.plot([27.5, 27.5], [15, 10], color="white")
+	# Pitch shoot-out lines
+	ax.plot([17.5, 17.5], [15, 10], color="white")
+	ax.plot([27.5, 27.5], [15, 10], color="white")
 
-  # Left Penalty Area
-        ax.plot([8, 8], [20, 5], color="white")
-        ax.plot([0, 8], [20, 20], color="white")
-        ax.plot([8, 0], [5, 5], color="white")
+	# Left Penalty Area
+	ax.plot([8, 8], [20, 5], color="white")
+	ax.plot([0, 8], [20, 20], color="white")
+	ax.plot([8, 0], [5, 5], color="white")
 
-  # Right Penalty Area
-        ax.plot([45, 37], [20, 20], color="white")
-        ax.plot([37, 37], [20, 5], color="white")
-        ax.plot([37, 45], [5, 5], color="white")
+	# Right Penalty Area
+	ax.plot([45, 37], [20, 20], color="white")
+	ax.plot([37, 37], [20, 5], color="white")
+	ax.plot([37, 45], [5, 5], color="white")
 
-  # Prepare Circles
-        centreSpot = plt.Circle((22.5,12.5), 0.1, color="white")
+	# Prepare Circles
+	centreSpot = plt.Circle((22.5,12.5), 0.1, color="white")
 
-  # Draw Circles
-        ax.add_patch(centreSpot)
-    
-  # Draw sentido do campo
-        sentido = plt.arrow(18, 12.5, 8, 0, color="white", head_width = 0.4)
-        ax.add_patch(sentido)
+	# Draw Circles
+	ax.add_patch(centreSpot)
 
-  #Preenchendo de Verde
-        ax.fill_between([0,45],[25,25],color="Green", alpha=1)
+	#Preenchendo de Verde
+	ax.fill_between([0,45],[25,25],color="Green", alpha=1)
 
-  # Tidy Axes
-        ax.axis('off')
-  
-   # mapa de calor de toques
-        customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['yellow','red'])
+	# Tidy Axes
+	ax.axis('off')
+
+	# mapa de calor de toques
+	customcmap = mat.colors.LinearSegmentedColormap.from_list('custom cmap', ['green','yellow','red'])
 	toques_xstart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'x_start'])
 	toques_ystart = list(my_df.loc[my_df['Nome_Toque'] == "Sim", 'y_start'])
-	
-		sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=30,cmap=customcmap)
-	
-        plt.ylim(0, 25)
-        plt.xlim(0, 45)
 
+	sns.kdeplot(x=toques_xstart, y=toques_ystart, shade=True, shade_lowest=False, alpha=1, n_levels=1000,cmap=customcmap, thresh=0.2)
+
+	plt.ylim(0, 25)
+	plt.xlim(0, 45)
         st.pyplot(fig)
 
 with tab3:
