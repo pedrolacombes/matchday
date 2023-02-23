@@ -18,6 +18,12 @@ import streamlit as st
 import cv2
 import moviepy.editor as moviepy
 
+# Adicionando sidebar
+select_player = st.sidebar.selectbox('Selecione um jogador', ['Samir'])
+
+
+
+
 # Puxando o arquivo com a base de passes
 
 sheet_id = '15Zkt-YrhKGC3JKdPhGl5tjQhaeCfihJiGUev1DKP52o'
