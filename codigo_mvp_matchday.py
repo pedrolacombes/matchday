@@ -960,14 +960,15 @@ def inject_ga():
     # web application's id is. You will find this in your Google Analytics account
     
     GA_JS = """
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y77W9CJ0KK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-Y77W9CJ0KK');
-    </script>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y77W9CJ0KK"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-Y77W9CJ0KK');
+		</script>
     """
 
     # Insert the script in the head tag of the static template inside your virtual
