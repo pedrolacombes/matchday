@@ -6,3 +6,5 @@ seaborn
 opencv-python-headless
 ffmpeg
 MoviePy
+pathlib
+bs4
