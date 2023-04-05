@@ -21,9 +21,7 @@ with st.container():
   else:
     st.button('Unlike')
   if st.button('Like'):
-    likes = 1
-  if st.button('Unlike'):
-    likes = 0
+    likes += 1
     
     
   st.button('Comente')
