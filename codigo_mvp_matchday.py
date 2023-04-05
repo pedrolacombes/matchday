@@ -19,8 +19,12 @@ with st.container():
     
   def like_button(likes):  
     if likes == 0:
-      st.button('Like')
+      if st.button('Like'):
+        likes = 1
+        like_button(likes)
     else:
-      st.button('Unlike')
+      if st.button('Unlike'):
+        likes = 0
+        like_button(likes)
 
   botao = like_button(likes)     
