@@ -15,17 +15,18 @@ with st.container():
   #expander = st.expander('Comentários')
   #expander.write('Irado')
   #expander.write('Muito legal')
-  likes = 0
   
+  def likes(like_button)
+    if st.button('Like'):
+      likes = 1
+    if st.button('Unlike'):
+      likes = 0
+    return likes
+    
   def like_button(likes):
-    st.write(likes)
-    if likes == 0:
-      if st.button('Like'):
-        likes = 1
-        like_button(likes)
-    else:
-      if st.button('Unlike'):
-        likes = 0
-        like_button(likes)
+      if likes == 0:
+        st.button('Like'):
+      else:
+        st.button('Unlike'):
 
   botao = like_button(likes)     
