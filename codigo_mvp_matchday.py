@@ -19,11 +19,11 @@ with st.container():
   lista_botao = ['Unlike']
 
   def botao(lista_botao):
-    if lista_botao[-1] == 'Unlike'
+    if lista_botao[-1] == 'Unlike':
       if st.button('Like'):
         lista_botao.append('Like')
         botao(lista_botao)
-    if lista_botao[-1] == 'Like'
+    if lista_botao[-1] == 'Like':
       if st.button('Unike'):
         lista_botao.append('Unike')
         botao(lista_botao)
