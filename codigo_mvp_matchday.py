@@ -20,6 +20,10 @@ with st.container():
     st.button('Like')
   else:
     st.button('Unlike')
+  if st.button('Like'):
+    likes = 1
+  if st.button('Unlike'):
+    likes = 0
     
     
   st.button('Comente')
