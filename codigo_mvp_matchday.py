@@ -15,13 +15,15 @@ with st.container():
   #expander = st.expander('Comentários')
   #expander.write('Irado')
   #expander.write('Muito legal')
-  likes = 1
-  if likes == 0:
-    st.button('Like')
+  likes = 0
+  while likes == 0:
+    if st.button('Like'):
+        likes = 1
   else:
-    st.button('Unlike')
-  if st.button('Like'):
-    likes += 1
+    if st.button('Unlike'):
+        likes = 0
+        
+
     
     
   st.button('Comente')
