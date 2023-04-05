@@ -16,6 +16,7 @@ with st.container():
   #expander.write('Irado')
   #expander.write('Muito legal')
   likes = 0
+  st.write(likes)
   while likes == 0:
     if st.button('Like'):
         likes = 1
@@ -23,7 +24,3 @@ with st.container():
     if st.button('Unlike'):
         likes = 0
         
-
-    
-    
-  st.button('Comente')
