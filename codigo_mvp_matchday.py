@@ -15,4 +15,4 @@ with st.container():
   expander = st.expander('Comentários')
   expander.write('Irado')
   expander.write('Muito legal')
-  expander.st.text_input('Deixe um comentário','(Seu Nome) (Seu comentário)')
+  expander.text_input('Deixe um comentário','(Seu Nome) (Seu comentário)')
