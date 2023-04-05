@@ -25,8 +25,8 @@ with st.container():
     
   def like_button(likes):
       if likes == 0:
-        st.button('Like'):
+        st.button('Like')
       else:
-        st.button('Unlike'):
+        st.button('Unlike')
 
   botao = like_button(likes)     
