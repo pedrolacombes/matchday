@@ -16,11 +16,11 @@ with st.container():
   #expander.write('Irado')
   #expander.write('Muito legal')
   likes = 0
-  st.write(likes)
-  if likes == 0:
-    if st.button('Like'):
-        likes = 1
-  else:
-    if st.button('Unlike'):
-        likes = 0
-        
+    
+  def like_button(likes):  
+    if likes == 0:
+      st.button('Like')
+    else:
+      st.button('Unlike')
+
+  botao = like_button(likes)     
