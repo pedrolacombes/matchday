@@ -13,7 +13,7 @@ with st.container():
   url = 'https://www.youtube.com/watch?v=JK14AYu-wOs'
   st.video(url)
   lista_comentarios = ['Irado', 'Muito legal']
-  title = st.text_input('Deixe seu comentário','')
+  title = st.text_input('Deixe seu comentário (se quiser se identificar, coloque seu nome entre () no início)','')
   lista_comentarios.append(title)
   expander = st.expander('Comentários')
   for comentario in lista_comentarios:
