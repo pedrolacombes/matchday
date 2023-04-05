@@ -15,7 +15,7 @@ with st.container():
   #expander = st.expander('Comentários')
   #expander.write('Irado')
   #expander.write('Muito legal')
-  likes = 0
+  likes = 1
   if likes == 0:
     st.button('Like')
   else:
