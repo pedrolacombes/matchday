@@ -16,7 +16,7 @@ with st.container():
   #expander.write('Irado')
   #expander.write('Muito legal')
   likes = 0
-    
+  st.write(likes)
   def like_button(likes):  
     if likes == 0:
       if st.button('Like'):
