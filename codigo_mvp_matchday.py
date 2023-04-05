@@ -16,7 +16,8 @@ with st.container():
   expander.write('Irado')
   expander.write('Muito legal')
   title = st.text_input('Deixe seu comentário','')
-  st.button('Enviar comentário')
+  title
+  
     
   
   
