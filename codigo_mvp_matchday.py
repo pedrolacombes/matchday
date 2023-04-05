@@ -15,4 +15,5 @@ with st.container():
   expander = st.expander('Comentários')
   expander.write('Irado')
   expander.write('Muito legal')
-  expander.text_input(st.button('Deixe um comentário'),'(Seu Nome) (Seu comentário)')
+  st.button('Like')
+  
