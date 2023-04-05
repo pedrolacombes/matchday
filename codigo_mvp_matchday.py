@@ -17,7 +17,7 @@ with st.container():
   #expander.write('Muito legal')
   likes = 0
   st.write(likes)
-  while likes == 0:
+  if likes == 0:
     if st.button('Like'):
         likes = 1
   else:
