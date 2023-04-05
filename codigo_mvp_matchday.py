@@ -28,4 +28,5 @@ with st.container():
         lista_botao.append('Unike')
         botao(lista_botao)
 
-  botao = botao(lista_botao)     
+  botao = botao(lista_botao)
+  lista_botao
