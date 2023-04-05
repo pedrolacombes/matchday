@@ -12,11 +12,11 @@ import streamlit as st
 with st.container():
   url = 'https://www.youtube.com/watch?v=JK14AYu-wOs'
   st.video(url)
+  title = st.text_input('Deixe seu comentário','')
   expander = st.expander('Comentários')
   expander.write('Irado')
   expander.write('Muito legal')
-  title = st.text_input('Deixe seu comentário','')
-  title
+
   
     
   
