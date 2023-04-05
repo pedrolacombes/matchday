@@ -15,3 +15,4 @@ with st.container():
   expander = st.expander('Comentários')
   expander.write('Irado')
   expander.write('Muito legal')
+  title = expander.st.text_input('Deixe um comentário','(Seu Nome) (Seu comentário)')
